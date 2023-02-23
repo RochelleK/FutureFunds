@@ -1,31 +1,39 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 const CaculatorContainer = () => {
+  const [age, setAge] = useState(35)
+  const [income, setIncome] = useState(100000)
+  const [savings, setSavings] = useState(30000)
+  const [monthly, setMonthly] = useState(1200)
+  const [retirementAge, setRetirementAge] = useState(67)
+  const [deathAge, setDeathAge] = useState(95)
+  const [rateOfReturn, setRateOfReturn] = useState(5)
+  const [monthlyRetirement, setMonthlyRetirement] = useState(parseInt(income*.7/12));
+  console.log(monthlyRetirement)
 
-
-  
   return (
     <div>
       <div className="flex px-8">
         <section className="py-8 bg-blueGray-100">
           <div className="container px-4 mx-auto">
             {/* <div className="flex flex-wrap items-center justify-between -mx-4"> */}
-              <div className="w-full md:w-auto px-4 mb-14 md:mb-0">
-                <h2 className="text-7xl md:text-8xl font-heading font-bold leading-relaxed">
-                  Retirement Calculator
-                </h2>
-                <p
-                  className="text-darkBlueGray-400 leading-8"
-                  contenteditable="false"
-                >
-                  Using your age, current income and current retirement savings
-                  rate, this retirement calculator will show whether you're on
-                  track for the retirement you want.
-                </p>
-              </div>
-              <div className="w-full md:w-auto px-4">
-                <div className="flex items-center"></div>
-              </div>
+            <div className="w-full md:w-auto px-4 mb-14 md:mb-0">
+              <h2 className="text-7xl md:text-8xl font-heading font-bold leading-relaxed">
+                Retirement Calculator
+              </h2>
+              <p
+                className="text-darkBlueGray-400 leading-8"
+                contenteditable="false"
+              >
+                Using your age, current income and current retirement savings
+                rate, this retirement calculator will show whether you're on
+                track for the retirement you want.
+              </p>
+            </div>
+            <div className="w-full md:w-auto px-4">
+              <div className="flex items-center"></div>
+            </div>
             {/* </div> */}
           </div>
         </section>
@@ -44,7 +52,10 @@ const CaculatorContainer = () => {
                       </label>
                       <input
                         className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
-                        type="text"
+                        type="number"
+                        placeholder="35"
+                        value={age}
+                        onChange={(e) => setAge(parseInt(e.target.value) || 0)}
                       />
                     </div>
                     <div className="mb-8">
@@ -53,7 +64,11 @@ const CaculatorContainer = () => {
                       </label>
                       <input
                         className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
-                        type="text"
+                        type="number"
+                        value={income}
+                        onChange={(e) =>
+                          setIncome(parseInt(e.target.value) || 0)
+                        }
                       />
                     </div>
                     <div className="mb-8">
@@ -62,7 +77,11 @@ const CaculatorContainer = () => {
                       </label>
                       <input
                         className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
-                        type="text"
+                        type="number"
+                        value={savings}
+                        onChange={(e) =>
+                          setSavings(parseInt(e.target.value) || 0)
+                        }
                       />
                     </div>
                     <div>
@@ -71,7 +90,11 @@ const CaculatorContainer = () => {
                       </label>
                       <input
                         className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
-                        type="text"
+                        type="number"
+                        value={monthly}
+                        onChange={(e) =>
+                          setMonthly(parseInt(e.target.value) || 0)
+                        }
                       />
                     </div>
                   </div>
@@ -98,7 +121,7 @@ const CaculatorContainer = () => {
                           </span>
                           <span className="flex items-center text-xl text-white">
                             <span className="mr-3 text-base">$</span>
-                            <span>710,70</span>
+                            <span>710,700</span>
                           </span>
                         </p>
                         <p
@@ -113,7 +136,7 @@ const CaculatorContainer = () => {
                           </span>
                           <span className="flex items-center text-xl text-white">
                             <span className="mr-3 text-base">$</span>
-                            <span>10,00</span>
+                            <span>1.7M</span>
                           </span>
                         </p>
                       </div>
