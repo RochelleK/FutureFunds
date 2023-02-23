@@ -1,5 +1,5 @@
 
-import { Route, Routes, useResolvedPath } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import './App.css';
 import CaculatorContainer from "./components/CaculatorContainer";
 import Home from "./components/Home";
