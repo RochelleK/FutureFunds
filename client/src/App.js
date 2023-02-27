@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import './App.css';
 import CaculatorContainer from "./components/CaculatorContainer";
 import Home from "./components/Home";
+import ItemsHome from "./components/ItemsHome";
 import NavBar from "./components/NavBar";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
@@ -26,6 +27,7 @@ function App() {
           element={<SignUp setUser={setUser} user={user} />}
         />
         <Route path="/nav" element={<NavBar />} />
+        <Route path="/items" element={<ItemsHome />} />
       </Routes>
     </div>
   );

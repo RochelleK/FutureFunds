@@ -8,30 +8,33 @@ const CaculatorContainer = () => {
   const [monthly, setMonthly] = useState(1200)
   const [retirementAge, setRetirementAge] = useState(67)
   const [deathAge, setDeathAge] = useState(95)
-  const [rateOfReturn, setRateOfReturn] = useState(5)
+  const [rateOfReturn, setRateOfReturn] = useState(.05)
   const [monthlyRetirement, setMonthlyRetirement] = useState(parseInt(income*.7/12))
   const [retireFund, setRetireFund] = useState(0)
   const [retireFundNeeded, setRetireFundNeeded] = useState()
 
-  console.log(monthlyRetirement, retirementAge, deathAge, rateOfReturn, monthlyRetirement)
+  // console.log(monthlyRetirement, retirementAge, deathAge, rateOfReturn, monthlyRetirement)
 
   useEffect(()=>{
 
+    // const calcRetireFunds = () =>{
+      let p = savings
+      let i = retirementAge - age 
+      while (i > 0) {
+        console.log(p)
+        console.log(monthly)
+        p=p+(p*rateOfReturn)+monthly
+        // p = p + monthly;
+        i-=1
+      }
+      setRetireFund(p)
+      console.log(retireFund)
+  
+    // }
   }, [age, income, savings, monthly]
 
   )
 
-  const calcRetireFunds = () =>{
-    let x = savings
-    let i = retirementAge - age 
-    while (i > 0) {
-      x=x+rateOfReturn
-      i+=1
-    }
-    setRetireFund(x)
-
-
-  }
 
   return (
     <div>

@@ -21,7 +21,7 @@ const signIn = (e) => {
     .then((data) => {
       setUser(data);
       console.log(user);
-      // navigate("/home");
+      navigate("/home");
     });
 };
 

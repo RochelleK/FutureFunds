@@ -1,12 +1,11 @@
 import React from 'react';
 
-const Items = () => {
+const ItemCardInfo = () => {
     return (
         <div>
-            Items Page 
             
         </div>
     );
 };
 
-export default Items;
+export default ItemCardInfo;
