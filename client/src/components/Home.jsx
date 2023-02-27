@@ -19,24 +19,23 @@ const Home = () => {
               See Your Future Prosperity: Plan Your Retirement with Growth in
               Mind
             </p>
-                              <Link to="/signin">
-
-            <a
-              class="inline-block py-5 px-10 text-xl leading-6 text-white font-medium tracking-tighter font-heading bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
-              href="#"
-            >
-              Sign In
-            </a>
+            <Link to="/signin">
+              <a
+                class="inline-block py-5 px-10 text-xl leading-6 text-white font-medium tracking-tighter font-heading bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
+                href="#"
+              >
+                Sign In
+              </a>
             </Link>
           </div>
         </div>
         <img
           class="absolute top-64 md:top-0 left-1/2 transform -translate-x-1/2 px-6 h-full"
-          src="uinel-assets/elements/call-to-action/elipse-bg-gray.svg"
+          src="https://shuffle.dev/uinel-assets/elements/call-to-action/elipse-bg-gray.svg"
           alt=""
         />
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

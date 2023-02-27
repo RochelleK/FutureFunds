@@ -19,7 +19,6 @@ useEffect(() => {
     return (
         <div>
           <NavBar/>
-            Items Page 
             <ItemsCardContainer items={items}/>
             
         </div>

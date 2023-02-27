@@ -1,71 +1,70 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Footer from "./Footer";
 import NavBar from "./NavBar";
 
 const CaculatorContainer = () => {
-  const [age, setAge] = useState(35)
-  const [income, setIncome] = useState(100000)
-  const [savings, setSavings] = useState(30000)
-  const [monthly, setMonthly] = useState(1200)
-  const [retirementAge, setRetirementAge] = useState(67)
-  const [deathAge, setDeathAge] = useState(95)
-  const [rateOfReturn, setRateOfReturn] = useState(.05)
-  const [monthlyRetirement, setMonthlyRetirement] = useState(parseInt(income*.7/12))
-  const [retireFund, setRetireFund] = useState(0)
-  const [retireFundNeeded, setRetireFundNeeded] = useState()
+  const [age, setAge] = useState(35);
+  const [income, setIncome] = useState(100000);
+  const [savings, setSavings] = useState(30000);
+  const [monthly, setMonthly] = useState(1200);
+  const [retirementAge, setRetirementAge] = useState(67);
+  const [deathAge, setDeathAge] = useState(95);
+  const [rateOfReturn, setRateOfReturn] = useState(0.05);
+  const [monthlyRetirement, setMonthlyRetirement] = useState(
+    parseInt((income * 0.7) / 12)
+  );
+  const [retireFund, setRetireFund] = useState(0);
+  const [retireFundNeeded, setRetireFundNeeded] = useState();
 
   // console.log(monthlyRetirement, retirementAge, deathAge, rateOfReturn, monthlyRetirement)
 
-  useEffect(()=>{
-
+  useEffect(() => {
     // const calcRetireFunds = () =>{
-      let p = savings
-      let i = retirementAge - age 
-      while (i > 0) {
-        console.log(p)
-        console.log(monthly)
-        p=p+(p*rateOfReturn)+monthly
-        // p = p + monthly;
-        i-=1
-      }
-      setRetireFund(p)
-      console.log(retireFund)
-  
+    let p = savings;
+    let i = retirementAge - age;
+    while (i > 0) {
+      console.log(p);
+      console.log(monthly);
+      p = p + p * rateOfReturn + monthly;
+      // p = p + monthly;
+      i -= 1;
+    }
+    setRetireFund(p);
+    console.log(retireFund);
+
     // }
-  }, [age, income, savings, monthly]
-
-  )
-
+  }, [age, income, savings, monthly]);
 
   return (
     <div>
-<NavBar/>
+      <NavBar />
       <section className="pt-12 pb-24">
         <div className="container px-4 mx-auto" contenteditable="false">
-      <div className="flex px-8">
-        <section className="py-8 bg-blueGray-100">
-          <div className="container px-4 mx-auto">
-            {/* <div className="flex flex-wrap items-center justify-between -mx-4"> */}
-            <div className="w-full md:w-auto px-4 mb-14 md:mb-0">
-              <h2 className="text-7xl md:text-8xl font-heading font-bold leading-relaxed">
-                Retirement Calculator
-              </h2>
-              <p
-                className="text-darkBlueGray-400 leading-8 text-3xl"
-                contenteditable="false"
-              >
-                Using your age, current income and current retirement savings
-                rate, this retirement calculator will show whether you're on
-                track for the retirement you want.
-              </p>
-            </div>
-            <div className="w-full md:w-auto px-4">
-              <div className="flex items-center"></div>
-            </div>
-            {/* </div> */}
+          <div className="w-full md:w-auto px-4 mb-14 md:mb-0">
+            <h2 className="text-7xl md:text-8xl font-heading font-bold leading-relaxed text-left">
+              Retirement Calculator
+            </h2>
+            <p
+              className="text-darkBlueGray-400 leading-8 text-3xl text-left"
+              contenteditable="false"
+            >
+              Using your age, current income and current retirement savings
+              rate, this retirement calculator will show whether you're on track
+              for the retirement you want.
+            </p>
           </div>
-        </section>
-      </div>
+          <div className="flex px-8">
+            <section className="py-8 bg-blueGray-100">
+              <div className="container px-4 mx-auto">
+                {/* <div className="flex flex-wrap items-center justify-between -mx-4"> */}
+                <div className="w-full md:w-auto px-4">
+                  <div className="flex items-center"></div>
+                </div>
+                {/* </div> */}
+              </div>
+            </section>
+          </div>
           <div className="flex flex-wrap justify-end lg:justify-start -mx-4 pb-14 mb-14 xl:pb-28 xl:mb-24 border-b border-black border-opacity-10">
             <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full px-4 mb-10 lg:mb-0">
               {/* <div className="flex flex-wrap -mx-4"> */}
@@ -180,6 +179,7 @@ const CaculatorContainer = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
