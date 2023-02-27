@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
 
 
 const SignIn = ({user, setUser}) => {
@@ -21,12 +22,13 @@ const signIn = (e) => {
     .then((data) => {
       setUser(data);
       console.log(user);
-      navigate("/home");
+      navigate("/calc");
     });
 };
 
   return (
     <div>
+      <NavBar/>
       <section className="pb-24">
         <div className="pt-24 pb-64 xl:pt-52 lg:pb-80 bg-gray-100 text-center rounded-b-10xl">
           <div className="container px-4 mx-auto">

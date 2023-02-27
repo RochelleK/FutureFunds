@@ -1,5 +1,8 @@
 import React from "react";
+import Footer from "./Footer";
 import NavBar from "./NavBar";
+import { Link } from "react-router-dom";
+
 
 const Home = () => {
   // rsc is shortcut to create
@@ -16,12 +19,15 @@ const Home = () => {
               See Your Future Prosperity: Plan Your Retirement with Growth in
               Mind
             </p>
+                              <Link to="/signin">
+
             <a
               class="inline-block py-5 px-10 text-xl leading-6 text-white font-medium tracking-tighter font-heading bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
               href="#"
             >
               Sign In
             </a>
+            </Link>
           </div>
         </div>
         <img
@@ -30,6 +36,7 @@ const Home = () => {
           alt=""
         />
       </section>
+      <Footer/>
     </div>
   );
 };

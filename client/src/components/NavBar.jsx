@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -6,6 +7,8 @@ const NavBar = () => {
       <section className="text-white text-lg font-sans font-bold relative bg-sky-900">
         <nav className="flex justify-between px-6 lg:px-12 py-8">
           <div className="flex w-full items-center justify-between">
+                              <Link to="/home">
+
             <a href="#">
               <img
                 className="h-12"
@@ -13,28 +16,37 @@ const NavBar = () => {
                 alt=""
               />
             </a>
+            </Link>
             <div className="flex items-center">
               <ul className="hidden xl:flex px-4 mx-auto tracking-tight">
                 <li className="mr-11 border-b border-blue-500 border-opacity-40 pb-px">
-                  <a className="hover:opacity-80" href="#">
-                    Calculator
-                  </a>
+                  <Link to="/calc">
+                    <a className="hover:opacity-80" href="#">
+                      Calculator
+                    </a>
+                  </Link>
                 </li>
                 <li className="mr-11 border-b border-blue-500 border-opacity-40 pb-px">
-                  <a className="hover:opacity-80" href="#">
-                    Ways To Save
-                  </a>
+                  <Link to="/items">
+                    <a className="hover:opacity-80" href="#">
+                      Ways To Save
+                    </a>
+                  </Link>
                 </li>
                 <li className="mr-11 border-b border-blue-500 border-opacity-40 pb-px"></li>
                 <li className="mr-11 border-b border-blue-500 border-opacity-40 pb-px">
-                  <a className="hover:opacity-80" href="#">
-                    Login
-                  </a>
+                  <Link to="/signin">
+                    <a className="hover:opacity-80" href="#">
+                      Login
+                    </a>
+                  </Link>
                 </li>
                 <li className="border-b border-blue-500 border-opacity-40 pb-px">
-                  <a className="hover:opacity-80" href="#">
-                    SignUp
-                  </a>
+                  <Link to="/signup">
+                    <a className="hover:opacity-80" href="#">
+                      SignUp
+                    </a>
+                  </Link>
                 </li>
               </ul>
             </div>

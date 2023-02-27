@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import ItemsCardContainer from './ItemsCardContainer';
+import NavBar from './NavBar';
 
 const ItemsHome = () => {
 const [items, setItems] = useState([])
@@ -17,6 +18,7 @@ useEffect(() => {
   
     return (
         <div>
+          <NavBar/>
             Items Page 
             <ItemsCardContainer items={items}/>
             

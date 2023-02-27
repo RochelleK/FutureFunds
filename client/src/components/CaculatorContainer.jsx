@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import NavBar from "./NavBar";
 
 const CaculatorContainer = () => {
   const [age, setAge] = useState(35)
@@ -38,7 +39,7 @@ const CaculatorContainer = () => {
 
   return (
     <div>
-
+<NavBar/>
       <section className="pt-12 pb-24">
         <div className="container px-4 mx-auto" contenteditable="false">
       <div className="flex px-8">
