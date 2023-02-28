@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ItemsCardContainer from "./ItemsCardContainer";
 import NavBar from "../NavBar";
 
-const ItemsHome = () => {
+const ItemsHome = ({user}) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {

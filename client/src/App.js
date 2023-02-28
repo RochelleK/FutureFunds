@@ -1,7 +1,6 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import './App.css';
+import "./App.css";
 import Budget from "./components/Items/Budget";
 import CaculatorContainer from "./components/CaculatorContainer";
 import Home from "./components/Home";
@@ -11,15 +10,26 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import TestPage from "./components/TestPage";
 function App() {
+  const [user, setUser] = useState(null);
+  const [yourBudget, setYourBudget] = useState([]);
 
-  const [user, setUser] = useState(null)
-    const [yourBudget, setYourBudget] = useState([]);
+  useEffect(() => {
+    // auto-login
+    const getUser = async () => {
+      let req = await fetch("/me");
+      let res = await req.json();
+      console.log("res", res);
+      setUser(res);
+    };
+    getUser();
+  }, []);
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/calc" element={<CaculatorContainer user={user}/>} />
+        <Route path="/calc" element={<CaculatorContainer user={user} />} />
         <Route
           path="/signin"
           element={<SignIn setUser={setUser} user={user} />}
@@ -37,7 +47,7 @@ function App() {
             <Budget
               user={user}
               yourBudget={yourBudget}
-              setYourBudget={setYourBudget} user={user}
+              setYourBudget={setYourBudget}
             />
           }
         />

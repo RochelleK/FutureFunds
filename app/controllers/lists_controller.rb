@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     private 
     def list
         params.permit(
-            :priority, :loan_amt, :interest_rate, :loan_term,:user_id, :career_id
+        :user_id, :item_id
         )
     end 
 
