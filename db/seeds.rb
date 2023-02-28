@@ -23,6 +23,10 @@ Phone = Item.create(name:"Phone", price:"80", image:"phone.jpg", frequency: "yea
 FastFood = Item.create(name:"Fast Food", price:"90", image:"food.jpg",frequency: "yearly")
 Subscription = Item.create(name:"Subscription", price:"100", image:"sub.jpg", frequency: "yearly")
 
+List.create(user_id: John.id, item_id:Car.id)
+List.create(user_id: John.id, item_id:Coffee.id)
+List.create(user_id: John.id, item_id:Jacket.id)
+
 
 puts "...done seeding"
 

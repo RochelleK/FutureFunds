@@ -22,7 +22,7 @@ const signIn = (e) => {
     .then((data) => {
       setUser(data);
       console.log(user);
-      navigate("/calc");
+      // navigate("/calc");
     });
 };
 

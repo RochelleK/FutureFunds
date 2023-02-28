@@ -7,15 +7,14 @@ const NavBar = () => {
       <section className="text-white text-lg font-sans font-bold relative bg-sky-900">
         <nav className="flex justify-between px-6 lg:px-12 py-8">
           <div className="flex w-full items-center justify-between">
-                              <Link to="/home">
-
-            <a href="#">
-              <img
-                className="h-12"
-                src="https://static.shuffle.dev/uploads/files/60/602e8bd4323643e060e504d93a6853a827e98be6/FullLogo-Transparent-NoBuffer.png"
-                alt=""
-              />
-            </a>
+            <Link to="/home">
+              <a href="#">
+                <img
+                  className="h-12"
+                  src="https://static.shuffle.dev/uploads/files/60/602e8bd4323643e060e504d93a6853a827e98be6/FullLogo-Transparent-NoBuffer.png"
+                  alt=""
+                />
+              </a>
             </Link>
             <div className="flex items-center">
               <ul className="hidden xl:flex px-4 mx-auto tracking-tight">
