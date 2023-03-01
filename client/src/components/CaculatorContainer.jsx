@@ -30,20 +30,21 @@ const CaculatorContainer = ({ user }) => {
   };
 
   const styles1 = (color) => {
-    if (retireFund / retireFundNeeded > 0.33) 
-    return`bg-blue-500`;
-    else return`bg-blue-500`;
+    if (retireFund / retireFundNeeded < 0.33) 
+    return `bg-${color}-500 border-8 border-red-300 `;
+    else return`bg-${color}-200`;
   };
   const styles2 = (color) => {
-    if (retireFund / retireFundNeeded > 0.33 && retireFundNeeded > 0.66)
-      return `bg-${color}-500`;
-    else 
-    return `bg-blue-500`;
+    if (((retireFund / retireFundNeeded) > 0.33) && (retireFundNeeded < 0.66))
+      return `bg-${color}-500 border-8 border-yellow-300 `;
+    else return `bg-${color}-200`;
   };
   const styles3 = (color) => {
-    if (retireFund / retireFundNeeded < 0.66) return `bg-${color}-500`;
-    else return `bg-${color}-50`;
+    if (retireFund / retireFundNeeded > 0.66)
+      return `bg-${color}-500 border-8 border-green-300`;
+    else return `bg-${color}-200`;
   };
+
 
   useEffect(() => {
     setRetireFund(compound);
@@ -294,16 +295,38 @@ const CaculatorContainer = ({ user }) => {
                         <div
                           className={`${styles1(
                             "red"
-                          )} flex-row w-1/4 px-5 py-3 text-sm leading-9 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-white`}
+                          )} flex-row w-1/4 px-5 py-3 text-sm leading-9 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-white`}
                         >
                           Falling behind
                         </div>
-                        <div className="flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-yellow-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 mx-1 text-white">
+                        <div className={`${styles2("yellow")}flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-yellow-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 mx-1 text-yellow-400`}>
                           on your way
                         </div>
-                        <div className="flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-green-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2">
+                        <div className={`${styles3("green")}flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-green-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-green-400`}>
                           getting close
                         </div>
+{(()=>{
+
+  
+  switch(level) {
+    case "red":
+    // code block
+    return <p>hello red</p>
+    break;
+    case "yellow":
+      // code block
+      break;
+      case "green":
+        // code block
+        break;
+    default:
+      // code block
+          return <p>hello other</p>;
+
+    }
+  }
+)
+}
 
                         {/* </div> */}
                       </div>
