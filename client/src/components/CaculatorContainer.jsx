@@ -28,6 +28,12 @@ const CaculatorContainer = ({ user }) => {
     );
   };
 
+  const styles1 =(color)=> {
+    if (retireFund>1000000)
+   return `bg-${color}-500`
+   else return `bg-${color}-50`;
+  }
+
   useEffect(() => {
     setRetireFund(compound);
     console.log(retireFund);
@@ -65,11 +71,11 @@ const CaculatorContainer = ({ user }) => {
             <div class="w-full px-4 mb-14 md:mb-0">
               <div class="py-12 bg-white rounded-3xl w-full">
                 <div class="xl:px-10">
-                  <h2 className="text-7xl md:text-5xl font-heading font-bold leading-relaxed text-left">
+                  <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
                     Retirement Calculator
                   </h2>
                   <p
-                    className="text-darkBlueGray-400 leading-8 text-3xl text-left"
+                    className="text-darkBlueGray-400 leading-8 text-3xl text-left py-6"
                     contenteditable="false"
                   >
                     Using your age, current income and current retirement
@@ -202,60 +208,94 @@ const CaculatorContainer = ({ user }) => {
                       </div>
                     </div>
                     {/* <div className="w-full md:w-1/2 lg:w-4/12 xl:w-1/2 px-4"> */}
-                    <div className="pt-11 pb-11 bg-purple-500 rounded-3xl">
-                      <div className="border-b border-opacity-20">
-                        <div className="px-10 pb-7">
-                          <h3
-                            className="mb-5 text-3xl text-white font-heading font-medium"
-                            contenteditable="false"
-                          >
-                            How much will you need to retire at 67?
-                          </h3>
-                          {/* parent div */}
-                          <div className="flex">
-                            <div className="flex-row">
-                              <p
-                                className="flex-col items-center justify-between leading-8 font-heading font-medium"
-                                href="#"
+                    <div className="pt-11 pb-11 bg-purple-50 rounded-3xl">
+                      {/* <div className="border-b border-opacity-20"> */}
+                      <div className="px-10 pb-7">
+                        <h3
+                          className="mb-5 text-3xl text-black font-heading font-medium text-left"
+                          contenteditable="false"
+                        >
+                          How much will you need to retire at 67?
+                        </h3>
+                        {/* parent div */}
+                        <div className="flex justify-around">
+                          <div className="flex-row ">
+                            <p
+                              className="flex-col items-center justify-between leading-8 font-heading font-medium"
+                              href="#"
+                            >
+                              <span className="flex-col items-center text-xl text-black">
+                                <span className="mr-3 text-base">$</span>
+                                <span>{convert(retireFund)}</span>
+                              </span>
+                              <div className="flex-row">
+                                <Chart number={retireFund} />
+                              </div>
+                              <span
+                                className="text-black text-opacity-70 flex-col"
+                                contenteditable="false"
                               >
-                                <span className="flex-col items-center text-xl text-white">
-                                  <span className="mr-3 text-base">$</span>
-                                  <span>{convert(retireFund)}</span>
-                                </span>
-                                <div className="flex-row">
-                                  <Chart number={retireFund}/>
-                                </div>
-                                <span
-                                  className="text-white text-opacity-70 flex-col"
-                                  contenteditable="false"
-                                >
-                                  You will have about:&nbsp;
-                                </span>
-                              </p>
-                            </div>
-                            <div className="flex-row">
-                              <p
-                                className="flex-col items-center justify-between leading-8 font-heading font-medium"
-                                href="#"
-                              >
-                                <span className="flex-col items-center text-xl text-white">
-                                  <span className="mr-3 text-base">$</span>
-                                  <span>{convert(retireFundNeeded)}</span>
-                                </span>
-                                <div className="flex-row">
-                                  <Chart  number={retireFundNeeded}/>
-                                </div>
-                                <span
-                                  className="text-white text-opacity-70"
-                                  contenteditable="false"
-                                >
-                                  You will need:&nbsp;
-                                </span>
-                              </p>
-                            </div>
+                                You will have about&nbsp;
+                              </span>
+                            </p>
                           </div>
-                          {/* end of parent div */}
+                          <div className="flex-row">
+                            <p
+                              className="flex-col items-center justify-between leading-8 font-heading font-medium"
+                              href="#"
+                            >
+                              <span className="flex-col items-center text-xl text-black">
+                                <span className="mr-3 text-base">$</span>
+                                <span>{convert(retireFundNeeded)}</span>
+                              </span>
+                              <div className="flex-row">
+                                <Chart number={retireFundNeeded} />
+                              </div>
+                              <span
+                                className="text-black text-opacity-70"
+                                contenteditable="false"
+                              >
+                                You will need about&nbsp;
+                              </span>
+                            </p>
+                          </div>
                         </div>
+                        {/* end of parent div */}
+                      </div>
+                      {/* </div> */}
+                                            <div className="px-10 pb-1">
+
+                      <h2
+                        className="mb-5 text-2xl text-black font-heading font-medium text-left"
+                        contenteditable="false"
+                      >
+                        Retirement savings score
+                      </h2>
+                      </div>
+                      <div className="flex justify-center">
+                        {/* <div className="flex-row"> */}
+
+                        {/* <input
+                            className="flex-row w-1/4 px-5 py-3 text-lg leading-9 bg-red-50 border-2 border-red-400 outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-xl my-2"
+                            placeholder="Needs attention"
+                            // value={"Needs attention"}
+                          />
+                         */}
+                        <div
+                          className={`${styles1(
+                            "red"
+                          )} flex-row w-1/4 px-5 py-3 text-sm leading-9 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2`}
+                        >
+                          Getting close
+                        </div>
+                        <div className="flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-yellow-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 mx-1">
+                          Getting far
+                        </div>
+                        <div className="flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-green-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2">
+                          Getting near
+                        </div>
+
+                        {/* </div> */}
                       </div>
                       <div className="px-10 mx-auto md:max-w-max">
                         <Link to="/items">

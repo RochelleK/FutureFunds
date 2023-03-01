@@ -6,9 +6,9 @@ const Chart = ({number}) => {
 console.log(number)
   const data = [
     {
-      name: "Page A",
+      // name: "Page A",
       uv: number,
-      pv: 10000,
+      pv: 2400,
       amt: 2400,
     },
   ];
