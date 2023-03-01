@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+   skip_before_action :authorize
 
     def index 
         render json: List.all
@@ -11,9 +12,9 @@ class ListsController < ApplicationController
     
 
     def destroy
-    path = List.find(params[:id])
-    path.destroy
-    head :no_content
+        path = List.find(params[:id])
+        path.destroy
+        head :no_content
     end
     
     private 
