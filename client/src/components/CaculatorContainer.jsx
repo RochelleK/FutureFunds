@@ -17,6 +17,7 @@ const CaculatorContainer = ({ user }) => {
   );
   const [retireFund, setRetireFund] = useState(0);
   const [retireFundNeeded, setRetireFundNeeded] = useState(income * 28);
+  const [level, setLevel] = useState("red")
 
   const compound = () => {
     const k = 1 + rateOfReturn / 100;
@@ -28,19 +29,28 @@ const CaculatorContainer = ({ user }) => {
     );
   };
 
-  const styles1 =(color)=> {
-    if (retireFund>1000000)
-   return `bg-${color}-500`
-   else return `bg-${color}-50`;
-  }
+  const styles1 = (color) => {
+    if (retireFund / retireFundNeeded > 0.33) 
+    return`bg-blue-500`;
+    else return`bg-blue-500`;
+  };
+  const styles2 = (color) => {
+    if (retireFund / retireFundNeeded > 0.33 && retireFundNeeded > 0.66)
+      return `bg-${color}-500`;
+    else 
+    return `bg-blue-500`;
+  };
+  const styles3 = (color) => {
+    if (retireFund / retireFundNeeded < 0.66) return `bg-${color}-500`;
+    else return `bg-${color}-50`;
+  };
 
   useEffect(() => {
     setRetireFund(compound);
+    setRetireFundNeeded(income*28)
     console.log(retireFund);
   }, [age, income, savings, monthly]);
   console.log("user " + user);
-
-  
 
   function convert(labelValue) {
     // Nine Zeroes for Billions
@@ -118,7 +128,7 @@ const CaculatorContainer = ({ user }) => {
                             Pre-tax income
                           </label>
                           <div class="flex items-center">
-                            <button class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full">
+                            <button class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full" onClick={()=>setIncome(income-1000)}>
                               <svg
                                 width="10"
                                 height="2"
@@ -135,6 +145,7 @@ const CaculatorContainer = ({ user }) => {
                                 ></line>
                               </svg>
                             </button>
+                          
                             <input
                               className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
                               type="number"
@@ -144,7 +155,7 @@ const CaculatorContainer = ({ user }) => {
                               }
                             />
 
-                            <button class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full">
+                            <button class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full" onClick={()=>setIncome(income+1000)}>
                               <svg
                                 width="10"
                                 height="11"
@@ -170,14 +181,14 @@ const CaculatorContainer = ({ user }) => {
                               </svg>
                             </button>
                           </div>
-                          <input
+                          {/* <input
                             className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
                             type="number"
                             value={`${income}`}
                             onChange={(e) =>
                               setIncome(parseInt(e.target.value) || 0)
                             }
-                          />
+                          /> */}
                         </div>
                         <div className="mb-8">
                           <label className="block mb-4 text-lg text-blue-550 text-left">
@@ -263,14 +274,13 @@ const CaculatorContainer = ({ user }) => {
                         {/* end of parent div */}
                       </div>
                       {/* </div> */}
-                                            <div className="px-10 pb-1">
-
-                      <h2
-                        className="mb-5 text-2xl text-black font-heading font-medium text-left"
-                        contenteditable="false"
-                      >
-                        Retirement savings score
-                      </h2>
+                      <div className="px-10 pb-1">
+                        <h2
+                          className="mb-5 text-2xl text-black font-heading font-medium text-left"
+                          contenteditable="false"
+                        >
+                          Retirement savings score
+                        </h2>
                       </div>
                       <div className="flex justify-center">
                         {/* <div className="flex-row"> */}
@@ -284,15 +294,15 @@ const CaculatorContainer = ({ user }) => {
                         <div
                           className={`${styles1(
                             "red"
-                          )} flex-row w-1/4 px-5 py-3 text-sm leading-9 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2`}
+                          )} flex-row w-1/4 px-5 py-3 text-sm leading-9 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-white`}
                         >
-                          Getting close
+                          Falling behind
                         </div>
-                        <div className="flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-yellow-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 mx-1">
-                          Getting far
+                        <div className="flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-yellow-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 mx-1 text-white">
+                          on your way
                         </div>
                         <div className="flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-green-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2">
-                          Getting near
+                          getting close
                         </div>
 
                         {/* </div> */}
@@ -300,7 +310,7 @@ const CaculatorContainer = ({ user }) => {
                       <div className="px-10 mx-auto md:max-w-max">
                         <Link to="/items">
                           <a
-                            className="block py-5 px-10 w-full text-xl leading-6 font-medium tracking-tighter font-heading text-center bg-white hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
+                            className="block py-5 px-10 w-full text-xl leading-6 font-medium tracking-tighter font-heading text-center bg-blue-300 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
                             href="#"
                             contenteditable="false"
                           >
