@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 
-const ItemsCardContainer = ({ items }) => {
+const ItemsCardContainer = ({ items, user, yourBudget, setYourBudget }) => {
   const [fourItems, setFourItems] = useState(items.slice(0, 4));
   return (
-    <div>
-      <section className="py-24 2xl:py-44 overflow-hidden">
+    // <div>
+      <section className="py-12 2xl:py-44 overflow-hidden">
         <div className="relative container px-4 mx-auto">
           <h2 className="mb-14 xl:mb-24 text-9xl xl:text-10xl font-heading font-medium">
             {/* <div contenteditable="false">what could these be worth?</div> */}
-          </h2> 
+          </h2>
           <div className="relative px-4 md:px-0">
             <div className="flex -mx-3 mb-5 sm:mb-0">
               {fourItems?.map((item) => {
-                return <ItemCard item={item} key={item.id} />;
+                return <ItemCard item={item} key={item.id} yourBudget={yourBudget} setYourBudget={setYourBudget} user={user}/>;
               })}
 
               {/* <div className="flex-shrink-0 p-3 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
@@ -141,7 +141,7 @@ const ItemsCardContainer = ({ items }) => {
           </div>
         </div>
       </section>
-    </div>
+    // {/* </div> */}
   );
 };
 

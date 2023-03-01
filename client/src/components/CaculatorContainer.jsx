@@ -32,7 +32,7 @@ const CaculatorContainer = ({ user }) => {
   const styles1 = (color) => {
     if (retireFund / retireFundNeeded < 0.33) 
     return `bg-${color}-500 border-8 border-red-300 `;
-    else return`bg-${color}-200`;
+    else return`bg-red-100`;
   };
   const styles2 = (color) => {
     if (((retireFund / retireFundNeeded) > 0.33) && (retireFundNeeded < 0.66))
@@ -129,7 +129,10 @@ const CaculatorContainer = ({ user }) => {
                             Pre-tax income
                           </label>
                           <div class="flex items-center">
-                            <button class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full" onClick={()=>setIncome(income-1000)}>
+                            <button
+                              class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full"
+                              onClick={() => setIncome(income - 1000)}
+                            >
                               <svg
                                 width="10"
                                 height="2"
@@ -146,7 +149,7 @@ const CaculatorContainer = ({ user }) => {
                                 ></line>
                               </svg>
                             </button>
-                          
+
                             <input
                               className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
                               type="number"
@@ -156,7 +159,10 @@ const CaculatorContainer = ({ user }) => {
                               }
                             />
 
-                            <button class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full" onClick={()=>setIncome(income+1000)}>
+                            <button
+                              class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full"
+                              onClick={() => setIncome(income + 1000)}
+                            >
                               <svg
                                 width="10"
                                 height="11"
@@ -275,7 +281,7 @@ const CaculatorContainer = ({ user }) => {
                         {/* end of parent div */}
                       </div>
                       {/* </div> */}
-                      <div className="px-10 pb-1">
+                      <div className="px-10 pb-0">
                         <h2
                           className="mb-5 text-2xl text-black font-heading font-medium text-left"
                           contenteditable="false"
@@ -284,51 +290,58 @@ const CaculatorContainer = ({ user }) => {
                         </h2>
                       </div>
                       <div className="flex justify-center">
-                        {/* <div className="flex-row"> */}
-
-                        {/* <input
-                            className="flex-row w-1/4 px-5 py-3 text-lg leading-9 bg-red-50 border-2 border-red-400 outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-xl my-2"
-                            placeholder="Needs attention"
-                            // value={"Needs attention"}
-                          />
-                         */}
                         <div
                           className={`${styles1(
                             "red"
-                          )} flex-row w-1/4 px-5 py-3 text-sm leading-9 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-white`}
+                          )} flex-row w-1/4 px-5 py-3 text-sm leading-9 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-red-300`}
                         >
                           Falling behind
                         </div>
-                        <div className={`${styles2("yellow")}flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-yellow-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 mx-1 text-yellow-400`}>
+                        <div
+                          className={`${styles2(
+                            "yellow"
+                          )}flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-yellow-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 mx-1 text-yellow-400`}
+                        >
                           on your way
                         </div>
-                        <div className={`${styles3("green")}flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-green-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-green-400`}>
+                        <div
+                          className={`${styles3(
+                            "green"
+                          )}flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-green-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-green-400`}
+                        >
                           getting close
                         </div>
-{(()=>{
-
-  
-  switch(level) {
-    case "red":
-    // code block
-    return <p>hello red</p>
-    break;
-    case "yellow":
-      // code block
-      break;
-      case "green":
-        // code block
-        break;
-    default:
-      // code block
-          return <p>hello other</p>;
-
-    }
-  }
-)
-}
+                        {() => {
+                          switch (level) {
+                            case "red":
+                              // code block
+                              return <p>hello red</p>;
+                              break;
+                            case "yellow":
+                              // code block
+                              break;
+                            case "green":
+                              // code block
+                              break;
+                            default:
+                              // code block
+                              return <p>hello other</p>;
+                          }
+                        }}
 
                         {/* </div> */}
+                      </div>
+                      <div className="px-10 pb-0">
+                        <h2
+                          className="mt-5 mb-2 text-xl text-black font-heading font-medium text-left"
+                          contenteditable="false"
+                        >
+                          Let's get Future You
+                          <span className="text-red-500">out of the red.</span>
+                        </h2>
+                        <p className="mb-5 text-sm text-black font-heading font-small text-left">
+                          See below for some blah ljsdlfj sldjf slj s lj : 
+                        </p>
                       </div>
                       <div className="px-10 mx-auto md:max-w-max">
                         <Link to="/items">

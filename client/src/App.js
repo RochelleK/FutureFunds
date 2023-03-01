@@ -39,7 +39,16 @@ function App() {
           element={<SignUp setUser={setUser} user={user} />}
         />
         <Route path="/nav" element={<NavBar />} />
-        <Route path="/items" element={<ItemsHome />} />
+        <Route
+          path="/items"
+          element={
+            <ItemsHome
+              user={user}
+              yourBudget={yourBudget}
+              setYourBudget={setYourBudget}
+            />
+          }
+        />
         <Route path="/test" element={<TestPage />} />
         <Route
           path="/budget"

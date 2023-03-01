@@ -8,12 +8,13 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
       .then((data) => {
         setYourBudget(data);
         console.log(data);
+        console.log(yourBudget);
       });
   }, []);
-  console.log("user " + user);
+  console.log( {user});
 
   const handleDelete = (id) => {
-    fetch(`/items/${id}`, {
+    fetch(`/lists/${id}`, {
       method: "DELETE",
     });
     const updatedBudget = yourBudget.filter((item) => item.id !== id);
@@ -24,15 +25,18 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
     if (user) return user?.id === item.user?.id;
     else return item;
   });
+  if (!yourBudget[0]) return null 
+  console.log("filtered list")
+  console.log(filteredList)
 
   return (
     <div>
       {user ? (
-        <section className="font-normal bg-blueGray-100 py-24 2xl:py-44">
+        <section className="font-normal bg-gray-100 py-24 2xl:py-44">
           <div className="container px-4 mx-auto">
-            <div className="mb-28">
-              <h2 className="font-heading font-medium text-9xl md:text-10xl xl:text-5xl leading-tight">
-                How much could I be saving? {user.name}
+            <div className="mb-8">
+              <h2 className="font-heading font-medium text-4xl md:text-10xl xl:text-5xl leading-tight">
+                {user.name}, your future starts now!
               </h2>
             </div>
             <div className="overflow-x-auto">
