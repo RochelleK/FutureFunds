@@ -17,7 +17,7 @@ const CaculatorContainer = ({ user }) => {
   );
   const [retireFund, setRetireFund] = useState(0);
   const [retireFundNeeded, setRetireFundNeeded] = useState(income * 28);
-  const [level, setLevel] = useState("red")
+  const [level, setLevel] = useState("red");
 
   const compound = () => {
     const k = 1 + rateOfReturn / 100;
@@ -30,12 +30,15 @@ const CaculatorContainer = ({ user }) => {
   };
 
   const styles1 = (color) => {
-    if (retireFund / retireFundNeeded < 0.33) 
-    return `bg-${color}-500 border-8 border-red-300 `;
-    else return`bg-red-100`;
+    if (retireFund / retireFundNeeded < 0.33)
+      return `bg-${color}-500 border-8 border-red-300 `;
+    else return `bg-red-100`;
   };
   const styles2 = (color) => {
-    if (((retireFund / retireFundNeeded) > 0.33) && (retireFundNeeded < 0.66))
+    if (
+      retireFund / retireFundNeeded > 0.33 &&
+      retireFund / retireFundNeeded < 0.66
+    )
       return `bg-${color}-500 border-8 border-yellow-300 `;
     else return `bg-${color}-200`;
   };
@@ -45,10 +48,9 @@ const CaculatorContainer = ({ user }) => {
     else return `bg-${color}-200`;
   };
 
-
   useEffect(() => {
     setRetireFund(compound);
-    setRetireFundNeeded(income*28)
+    setRetireFundNeeded(income * 28);
     console.log(retireFund);
   }, [age, income, savings, monthly]);
   console.log("user " + user);
@@ -79,31 +81,31 @@ const CaculatorContainer = ({ user }) => {
       <section class="pt-12 overflow-hidden bg-gray-100">
         <div class="container px-4 mx-auto">
           <div class="flex flex-wrap -mx-4 mb-14 xl:mb-24">
-            <div class="w-full px-4 mb-14 md:mb-0">
+            <div class="w-full px-4 mb-14 md:mb-0 justify-center">
               <div class="py-12 bg-white rounded-3xl w-full">
-                <div class="xl:px-10">
-                  <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
-                    Retirement Calculator
-                  </h2>
-                  <p
-                    className="text-darkBlueGray-400 leading-8 text-3xl text-left py-6"
-                    contenteditable="false"
-                  >
-                    Using your age, current income and current retirement
-                    savings rate, this retirement calculator will show whether
-                    you're on track for the retirement you want.
-                  </p>
-                </div>
                 <div className="flex px-8">
-                  <section className="py-8 bg-blueGray-100">
-                    <div className="container px-4 mx-auto">
-                      {/* <div className="flex flex-wrap items-center justify-between -mx-4"> */}
-                      <div className="w-full md:w-auto px-4">
+                  <div class="xl:px-10">
+                    <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
+                      Retirement Calculator
+                    </h2>
+                    <p
+                      className="text-darkBlueGray-400 leading-8 text-3xl text-left py-6"
+                      contenteditable="false"
+                    >
+                      Using your age, current income and current retirement
+                      savings rate, this retirement calculator will show whether
+                      you're on track for the retirement you want.
+                    </p>
+                  </div>
+                  {/* <section className="py-8 bg-blueGray-100"> */}
+                  {/* <div className="container px-4 mx-auto"> */}
+                  {/* <div className="flex flex-wrap items-center justify-between -mx-4"> */}
+                  {/* <div className="w-full md:w-auto px-4">
                         <div className="flex items-center"></div>
-                      </div>
-                      {/* </div> */}
-                    </div>
-                  </section>
+                      </div> */}
+                  {/* </div> */}
+                  {/* </div> */}
+                  {/* </section> */}
                 </div>
                 <div className="flex flex-wrap justify-end lg:justify-start -mx-4 pb-14 mb-14 xl:pb-28 xl:mb-24 border-b border-black border-opacity-10">
                   <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full px-4 mb-10 lg:mb-0">
@@ -115,7 +117,7 @@ const CaculatorContainer = ({ user }) => {
                             Your Age:&nbsp;
                           </label>
                           <input
-                            className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
+                            className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
                             type="number"
                             placeholder="35"
                             value={age}
@@ -130,7 +132,7 @@ const CaculatorContainer = ({ user }) => {
                           </label>
                           <div class="flex items-center">
                             <button
-                              class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full"
+                              class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
                               onClick={() => setIncome(income - 1000)}
                             >
                               <svg
@@ -151,7 +153,7 @@ const CaculatorContainer = ({ user }) => {
                             </button>
 
                             <input
-                              className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
+                              className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
                               type="number"
                               value={`${income}`}
                               onChange={(e) =>
@@ -160,7 +162,7 @@ const CaculatorContainer = ({ user }) => {
                             />
 
                             <button
-                              class="inline-flex items-center justify-center w-5 h-5 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-full"
+                              class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
                               onClick={() => setIncome(income + 1000)}
                             >
                               <svg
@@ -188,40 +190,132 @@ const CaculatorContainer = ({ user }) => {
                               </svg>
                             </button>
                           </div>
-                          {/* <input
-                            className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
-                            type="number"
-                            value={`${income}`}
-                            onChange={(e) =>
-                              setIncome(parseInt(e.target.value) || 0)
-                            }
-                          /> */}
                         </div>
                         <div className="mb-8">
                           <label className="block mb-4 text-lg text-blue-550 text-left">
                             Current Savings:&nbsp;
                           </label>
-                          <input
-                            className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
-                            type="number"
-                            value={savings}
-                            onChange={(e) =>
-                              setSavings(parseInt(e.target.value) || 0)
-                            }
-                          />
+                          <div class="flex items-center">
+                            <button
+                              class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
+                              onClick={() => setSavings(savings - 1000)}
+                            >
+                              <svg
+                                width="10"
+                                height="2"
+                                viewBox="0 0 10 2"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <line
+                                  x1="10"
+                                  y1="1.03564"
+                                  y2="1.03564"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                ></line>
+                              </svg>
+                            </button>
+                            <input
+                              className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
+                              type="number"
+                              value={savings}
+                              onChange={(e) =>
+                                setSavings(parseInt(e.target.value) || 0)
+                              }
+                            />
+                            <button
+                              class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
+                              onClick={() => setSavings(savings + 1000)}
+                            >
+                              <svg
+                                width="10"
+                                height="11"
+                                viewBox="0 0 10 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <line
+                                  x1="5.03516"
+                                  y1="0.285645"
+                                  x2="5.03516"
+                                  y2="10.9999"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                ></line>
+                                <line
+                                  x1="10"
+                                  y1="6.03564"
+                                  y2="6.03564"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                ></line>
+                              </svg>
+                            </button>
+                          </div>
                         </div>
                         <div>
                           <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
                             Every month I save:&nbsp;
                           </label>
-                          <input
-                            className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
-                            type="number"
-                            value={monthly}
-                            onChange={(e) =>
-                              setMonthly(parseInt(e.target.value) || 0)
-                            }
-                          />
+                          <div class="flex items-center">
+                            <button
+                              class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
+                              onClick={() => setMonthly(monthly - 50)}
+                            >
+                              <svg
+                                width="10"
+                                height="2"
+                                viewBox="0 0 10 2"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <line
+                                  x1="10"
+                                  y1="1.03564"
+                                  y2="1.03564"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                ></line>
+                              </svg>
+                            </button>
+                            <input
+                              className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
+                              type="number"
+                              value={monthly}
+                              onChange={(e) =>
+                                setMonthly(parseInt(e.target.value) || 0)
+                              }
+                            />
+                            <button
+                              class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
+                              onClick={() => setMonthly(monthly + 50)}
+                            >
+                              <svg
+                                width="10"
+                                height="11"
+                                viewBox="0 0 10 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <line
+                                  x1="5.03516"
+                                  y1="0.285645"
+                                  x2="5.03516"
+                                  y2="10.9999"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                ></line>
+                                <line
+                                  x1="10"
+                                  y1="6.03564"
+                                  y2="6.03564"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                ></line>
+                              </svg>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -340,7 +434,7 @@ const CaculatorContainer = ({ user }) => {
                           <span className="text-red-500">out of the red.</span>
                         </h2>
                         <p className="mb-5 text-sm text-black font-heading font-small text-left">
-                          See below for some blah ljsdlfj sldjf slj s lj : 
+                          See below for some blah ljsdlfj sldjf slj s lj :
                         </p>
                       </div>
                       <div className="px-10 mx-auto md:max-w-max">
