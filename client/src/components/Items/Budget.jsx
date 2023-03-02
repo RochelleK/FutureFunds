@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BudgetItem from "./BudgetItem";
 
 const Budget = ({ yourBudget, setYourBudget, user }) => {
+  const [total, setTotal] = useState(0)
   useEffect(() => {
     fetch("/lists")
       .then((response) => response.json())
@@ -16,16 +17,23 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
     });
     const updatedBudget = yourBudget.filter((item) => item.id !== id);
     setYourBudget(updatedBudget);
-    console.log("updatedBudget")
-    console.log(updatedBudget)
   };
 
   const filteredList = yourBudget.filter((item) => {
     if (user) return user?.id === item.user?.id;
     else return item;
   });
-  if (!yourBudget[0]) return null 
 
+     useEffect(() => {
+       let sum = 0;
+       for (let i = 0; i < filteredList.length; i++) {
+         sum += filteredList[i].item.price;
+       }
+       setTotal(sum);
+     }, []);
+
+
+  if (!yourBudget[0]) return null 
 
   return (
     <div>
@@ -43,21 +51,13 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                   <thead className="text-white">
                     <tr>
                       <th className="h-20 bg-indigo-700 pl-16 px-12 text-lg font-semibold uppercase">
-                        {/* <div className="flex itmes-center min-w-max"> */}
-                          {/* <div>
-                            <input
-                              className="mr-9 border-none form-checkbox h-5 w-5 border border-gray-300"
-                              type="checkbox"
-                            />
-                          </div> */}
-                          <p>ITEM</p>
-                        {/* </div> */}
+                        <p>ITEM</p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">Value Now</p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
-                        <p className="min-w-max">Compoud Interest @ 5% over 30 years</p>
+                        <p className="min-w-max">Compound Interest</p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">Value Later</p>
@@ -82,8 +82,29 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                           key={item.id}
                         />
                       );
-                    })}                 
+                    })}
                   </tbody>
+                  <thead className="text-white">
+                    <tr>
+                      <th className="h-20 bg-indigo-700 pl-16 px-12 text-lg font-semibold uppercase">
+                        <p></p>
+                      </th>
+                      <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
+                        <p className="min-w-max">${total}</p>
+                      </th>
+                      <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
+                        <p className="min-w-max">
+                          Compoud Interest @ 5% over 30 years
+                        </p>
+                      </th>
+                      <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
+                        <p className="min-w-max">Value Later</p>
+                      </th>
+                      <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
+                        <p className="min-w-max"></p>
+                      </th>
+                    </tr>
+                  </thead>
                 </table>
               </div>
             </div>
@@ -95,7 +116,8 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
             Ways to Save&nbsp;
           </h2>
           <h3 className="pb-48 pt-32 mt-5 mb-4 text-2xl font-bold tracking-tighter text-center md:text-3xl text-gray-500">
-            Hi there! Nothing to show yet. Sign In to see how you can save toward your future!
+            Hi there! Nothing to show yet. Sign In to see how you can save
+            toward your future!
           </h3>
         </div>
       )}
