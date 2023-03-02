@@ -5,20 +5,20 @@ const ItemsCardContainer = ({ items, user, yourBudget, setYourBudget }) => {
   const [fourItems, setFourItems] = useState(items.slice(0, 4));
   return (
     // <div>
-      <section className="py-12 2xl:py-44 overflow-hidden">
+      <section className="overflow-hidden">
         <div className="relative container px-4 mx-auto">
           <h2 className="mb-14 xl:mb-24 text-9xl xl:text-10xl font-heading font-medium">
             {/* <div contenteditable="false">what could these be worth?</div> */}
           </h2>
           <div className="relative px-4 md:px-0">
-            <div className="flex -mx-3 mb-5 sm:mb-0">
+            <div className="flex -mx-3 sm:mb-0">
               {fourItems?.map((item) => {
                 return <ItemCard item={item} key={item.id} yourBudget={yourBudget} setYourBudget={setYourBudget} user={user}/>;
               })}
 
               
             </div>
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 xl:translate-x-1/2 md:-mr-6 xl:-mr-0">
+            {/* <div className="absolute right-0 top-1/2 transform -translate-y-1/2 xl:translate-x-1/2 md:-mr-6 xl:-mr-0">
               <a
                 className="w-18 h-14 flex justify-center items-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
                 href="#"
@@ -37,7 +37,7 @@ const ItemsCardContainer = ({ items, user, yourBudget, setYourBudget }) => {
                   ></path>
                 </svg>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

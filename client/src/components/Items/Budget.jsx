@@ -7,11 +7,8 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
       .then((response) => response.json())
       .then((data) => {
         setYourBudget(data);
-        console.log(data);
-        console.log(yourBudget);
       });
   }, []);
-  console.log( {user});
 
   const handleDelete = (id) => {
     fetch(`/lists/${id}`, {
@@ -19,6 +16,8 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
     });
     const updatedBudget = yourBudget.filter((item) => item.id !== id);
     setYourBudget(updatedBudget);
+    console.log("updatedBudget")
+    console.log(updatedBudget)
   };
 
   const filteredList = yourBudget.filter((item) => {
@@ -26,13 +25,12 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
     else return item;
   });
   if (!yourBudget[0]) return null 
-  console.log("filtered list")
-  console.log(filteredList)
+
 
   return (
     <div>
       {user ? (
-        <section className="font-normal bg-gray-100 py-24 2xl:py-44">
+        <section className="font-normal bg-gray-100 2xl:py-10">
           <div className="container px-4 mx-auto">
             <div className="mb-8">
               <h2 className="font-heading font-medium text-4xl md:text-10xl xl:text-5xl leading-tight">
@@ -45,24 +43,24 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                   <thead className="text-white">
                     <tr>
                       <th className="h-20 bg-indigo-700 pl-16 px-12 text-lg font-semibold uppercase">
-                        <div className="flex itmes-center min-w-max">
-                          <div>
+                        {/* <div className="flex itmes-center min-w-max"> */}
+                          {/* <div>
                             <input
                               className="mr-9 border-none form-checkbox h-5 w-5 border border-gray-300"
                               type="checkbox"
                             />
-                          </div>
+                          </div> */}
                           <p>ITEM</p>
-                        </div>
+                        {/* </div> */}
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
-                        <p className="min-w-max">Now</p>
+                        <p className="min-w-max">Value Now</p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
-                        <p className="min-w-max">Later</p>
+                        <p className="min-w-max">Compoud Interest @ 5% over 30 years</p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
-                        <p className="min-w-max">VALUE NOW</p>
+                        <p className="min-w-max">Value Later</p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">REMOVE</p>
@@ -79,14 +77,12 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                           handleDelete={handleDelete}
                           setYourBudget={setYourBudget}
                           item={item}
-                          key={item.id}
                           id={item.id}
                           yourBudget={yourBudget}
+                          key={item.id}
                         />
                       );
-                    })}
-                    {<BudgetItem />}
-                    {<BudgetItem />}
+                    })}                 
                   </tbody>
                 </table>
               </div>

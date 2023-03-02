@@ -18,7 +18,7 @@ class ListsController < ApplicationController
     end
     
     private 
-    def list
+    def list_params
         params.permit(
         :user_id, :item_id
         )
