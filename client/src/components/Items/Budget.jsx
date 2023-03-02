@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import BudgetItem from "./BudgetItem";
 
 const Budget = ({ yourBudget, setYourBudget, user }) => {
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0);
   useEffect(() => {
     fetch("/lists")
       .then((response) => response.json())
@@ -24,16 +24,26 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
     else return item;
   });
 
-     useEffect(() => {
-       let sum = 0;
-       for (let i = 0; i < filteredList.length; i++) {
-         sum += filteredList[i].item.price;
-       }
-       setTotal(sum);
-     }, []);
+ const [principal, setPrincipal] = useState(10);
+ const [rate, setRate] = useState(0.05);
+ const [time, setTime] = useState(30);
+ const [periods, setPeriods] = useState(1);
+ 
+   function calculateCompoundInterest(principal, rate, time, periods) {
+     let amount = principal * Math.pow(1 + rate / periods, periods * time);
+     let interest = amount - principal;
+     return amount.toFixed(0);
+   }
+  useEffect(() => {
+    let sum = 0;
+    for (let i = 0; i < filteredList.length; i++) {
+      sum += filteredList[i].item.price;
+    }
+    setTotal(sum);
+    setPrincipal(sum); 
+  }, []);
 
-
-  if (!yourBudget[0]) return null 
+  if (!yourBudget[0]) return null;
 
   return (
     <div>
@@ -94,11 +104,25 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">
-                          Compoud Interest @ 5% over 30 years
+                          $
+                          {calculateCompoundInterest(
+                            principal,
+                            rate,
+                            time,
+                            periods
+                          )-principal}
                         </p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
-                        <p className="min-w-max">Value Later</p>
+                        <p className="min-w-max">
+                          $
+                          {calculateCompoundInterest(
+                            principal,
+                            rate,
+                            time,
+                            periods
+                          )}
+                        </p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max"></p>
