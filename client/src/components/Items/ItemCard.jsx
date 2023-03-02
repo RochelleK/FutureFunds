@@ -25,8 +25,6 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
     ));
     const [itemCompounded, setItemCompounded] = useState(compoundedItem);
 
-    const progressWidth = `${0.5 * 100}%`;
-
   const handleSubmit = () => {
     fetch("/lists", {
       method: "POST",
@@ -63,7 +61,10 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
             {item?.name}
           </p>
         </a>
-        <PieCharts num1={item.price} num2={200} />
+        <PieCharts
+          num1={item.price}
+          num2={parseInt(calculateCompoundInterest(principal, rate, time, periods))}
+        />
 
         <div className="flex selection:flex-row justify-between">
           <p className="flex items-center text-xl text-blue-500 font-heading font-medium tracking-tighter flex-col">
@@ -75,7 +76,20 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
             <div>
               ${calculateCompoundInterest(principal, rate, time, periods)}
             </div>
-            <div>In 30 Years</div>
+            <div>
+              <span>In </span>
+              <span>
+                <input
+                  className="w-20 px-1 py-1 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
+                  type="number"
+                  placeholder="35"
+                  value={time}
+                  onChange={(e) => setTime(parseInt(e.target.value) || 0)}
+                />
+              </span>
+              <span> Years</span>
+              {/* In 30 Years */}
+            </div>
           </p>
         </div>
         <a

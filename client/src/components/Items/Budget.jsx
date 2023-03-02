@@ -17,6 +17,7 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
     });
     const updatedBudget = yourBudget.filter((item) => item.id !== id);
     setYourBudget(updatedBudget);
+    console.log("deleted")
   };
 
   const filteredList = yourBudget.filter((item) => {

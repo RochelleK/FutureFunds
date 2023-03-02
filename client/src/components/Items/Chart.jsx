@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { BarChart, Bar, ResponsiveContainer } from 'recharts';
 
 const Chart = ({number}) => {
-console.log(number)
+// console.log(number)
   const data = [
     {
       // name: "Page A",

@@ -10,7 +10,6 @@ class ListsController < ApplicationController
         render json: path 
     end 
     
-
     def destroy
         path = List.find(params[:id])
         path.destroy
