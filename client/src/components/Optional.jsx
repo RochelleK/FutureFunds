@@ -1,42 +1,53 @@
 import React from "react";
+import Tooltip from "./ToolTip";
 
-const Optional = ({age,
-                      income,
-                      setAge,
-                      setIncome,
-                      savings,
-                      setSavings,
-                      monthly,
-                      setMonthly, isOptional, setIsOptional, changeOption })=> {
+const Optional = ({
+  age,
+  income,
+  setAge,
+  setIncome,
+  savings,
+  setSavings,
+  monthly,
+  setMonthly,
+  isOptional,
+  setIsOptional,
+  changeOption,
+  retirementAge,
+  setRetirementAge,
+  deathAge,
+  setDeathAge,
+  rateOfReturn,
+  setRateOfReturn,
+  monthlyRetirement,
+  setMonthlyRetirement,
+}) => {
   return (
     <div className="lg:max-w-md p-3">
       <div className="lg:max-w-md flex justify-between mt-6 mx-6">
         <div className="mb-8 font-bold text-xl">Optional</div>
         <div className="h-6 w-6">
-          <img
-            src="./noun-top-arrow-3012854.svg"
-            onClick={changeOption}
-          />
+          <img src="./noun-top-arrow-3012854.svg" onClick={changeOption} />
         </div>
       </div>
       <div className="mb-8 ">
         <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
-          Your Age:&nbsp;
-          {/* <Tooltip text="The younger the better!">
+          I want to retire at age:&nbsp;
+          <Tooltip text="Most people go with 67. Of course, the longer you work, the more you can save.">
                   <span className="text-blue-500 cursor-pointer">
                     <img
                       src="./noun-question-mark-2660318.svg"
-                      className="w-6 h-6 object-contain"
+                      className="w-5 h-5 object-contain"
                     />
                   </span>
-                </Tooltip> */}
+                </Tooltip>
         </label>
         <input
           className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
           type="number"
           placeholder="35"
-          value={age}
-          onChange={(e) => setAge(parseInt(e.target.value) || 0)}
+          value={retirementAge}
+          onChange={(e) => setRetirementAge(parseInt(e.target.value) || 0)}
         />
       </div>
       <div className="mb-8">

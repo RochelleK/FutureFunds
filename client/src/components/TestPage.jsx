@@ -4,12 +4,13 @@ import CustomBarChart from './CustomBarChart';
 import Chart from './Items/Chart';
 import PieCharts from './Items/PieCharts';
 import Optional from './Optional';
+import StaticBar from './StaticBar';
 
 const TestPage = () => {
     return (
       <div>
         hello
-<Optional/>      </div>
+<StaticBar totalHeight={100} ratio={.75}/>      </div>
     );
 };
 

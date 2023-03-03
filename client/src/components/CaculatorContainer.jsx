@@ -6,10 +6,13 @@ import NavBar from "./NavBar";
 import Tooltip from "./ToolTip";
 import CustomBarChart from "./CustomBarChart";
 import Optional from "./Optional";
+import StaticBar from "./StaticBar";
 
 const CaculatorContainer = ({ user }) => {
   const [age, setAge] = useState(35);
   const [income, setIncome] = useState(100000);
+  const [displayIncome, setDisplayIncome] = useState(100000);
+
   const [savings, setSavings] = useState(30000);
   const [monthly, setMonthly] = useState(1200);
   const [retirementAge, setRetirementAge] = useState(67);
@@ -19,11 +22,37 @@ const CaculatorContainer = ({ user }) => {
     parseInt((income * 0.7) / 12)
   );
   const [retireFund, setRetireFund] = useState(0);
-  const [retireFundNeeded, setRetireFundNeeded] = useState(income * 28);
+  const [retireFundNeeded, setRetireFundNeeded] = useState(
+    (parseInt(income) * 0.8) / 0.04
+  );
   const [level, setLevel] = useState("red");
-  const [isOptional, setIsOptional] = useState(false)
+  const [isOptional, setIsOptional] = useState(false);
 
-  const changeOption =()=>{setIsOptional(!isOptional)}
+  const changeOption = () => {
+    setIsOptional(!isOptional);
+  };
+
+  // const formattedValue =(input)=> input.toLocaleString("en-US", {
+  //     style: "currency",
+  //     currency: "USD",
+  //   });
+
+  const handleInputChange = (event, setState, setDisplayState) => {
+    const inputValue = event.target.value;
+    const numericValue = parseFloat(inputValue.replace(/[^0-9.-]+/g, "")) || 0; // remove non-numeric characters and convert to number
+    setState(numericValue);
+    setDisplayState(
+      event.target.value.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      })
+    );
+  };
+
+  const formattedValue = income.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   const compound = () => {
     const k = 1 + rateOfReturn / 100;
@@ -35,6 +64,7 @@ const CaculatorContainer = ({ user }) => {
     );
   };
 
+  const ratio = retireFund / retireFundNeeded
   const styles1 = (color) => {
     if (retireFund / retireFundNeeded < 0.33)
       return `bg-${color}-500 border-8 border-red-300 `;
@@ -56,7 +86,7 @@ const CaculatorContainer = ({ user }) => {
 
   useEffect(() => {
     setRetireFund(compound);
-    setRetireFundNeeded(income * 28);
+    // setRetireFundNeeded(income * 28);
     console.log(retireFund);
   }, [age, income, savings, monthly]);
   console.log("user " + user);
@@ -82,9 +112,9 @@ const CaculatorContainer = ({ user }) => {
     <div>
       <NavBar />
       <section class="pt-12 overflow-hidden bg-gray-100">
-        <div class="container px-4 mx-auto border-2 border-black border-opacity-100">
+        <div class="container px-4 mx-auto ">
           {/* <div class="w-full px-4 mb-14 md:mb-0 justify-center"> */}
-          <div class="py-12 bg-white rounded-xl w-full border-2 border-black border-opacity-100">
+          <div class="py-12 bg-white rounded-xl w-full">
             <div className="flex px-8">
               <div class="xl:px-10">
                 <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
@@ -101,9 +131,9 @@ const CaculatorContainer = ({ user }) => {
               </div>
             </div>
             <div className="flex flex-wrap justify-end lg:justify-start ml-1 pb-14 mb-14 xl:pb-28 xl:mb-24 border-b border-black border-opacity-10">
-              <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full px-2 mb-2 lg:mb-0 border-2 border-black border-opacity-100">
-                <div className="w-full md:w-1/2 px-4 pl-6 border-2 border-red border-opacity-100 overflow-auto h-[48rem]">
-                  <div className="lg:max-w-md ml-8 border-2 border-black border-opacity-50 p-3">
+              <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full px-2 mb-2 lg:mb-0  border-red-300 border-4 border-opacity-100">
+                <div className="w-full md:w-1/3 px-4 pl-2  border-green-300 border-4 border-opacity-100 overflow-auto h-[48rem]">
+                  <div className="lg:max-w-md ml-8 border-gray border-2 border-opacity-50 p-3">
                     <div className="mb-8 ">
                       <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
                         Your Age:&nbsp;
@@ -127,6 +157,7 @@ const CaculatorContainer = ({ user }) => {
                     <div className="mb-8">
                       <label className="block mb-4 text-lg text-blue-500 text-left">
                         Pre-tax income
+                        {/* {`${num1.toLocaleString("en-US", { style: "currency", currency: "USD" })}`} */}
                       </label>
                       <div class="flex items-center">
                         <button
@@ -153,10 +184,11 @@ const CaculatorContainer = ({ user }) => {
                         <input
                           className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
                           type="number"
-                          value={`${income}`}
+                          value={income}
                           onChange={(e) =>
                             setIncome(parseInt(e.target.value) || 0)
                           }
+                          // onChange={(e) => handleInputChange(e, setIncome)}
                         />
 
                         <button
@@ -316,7 +348,7 @@ const CaculatorContainer = ({ user }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="lg:max-w-md ml-8 border-2 border-black border-opacity-50">
+                  <div className="lg:max-w-md ml-8 border-2 border-gray border-opacity-100 mt-4">
                     {isOptional ? (
                       <Optional
                         age={age}
@@ -330,6 +362,14 @@ const CaculatorContainer = ({ user }) => {
                         setIsOptional={setIsOptional}
                         isOptional={isOptional}
                         changeOption={changeOption}
+                        retirementAge={retirementAge}
+                        setRetirementAge={setRetirementAge}
+                        deathAge={deathAge}
+                        setDeathAge={setDeathAge}
+                        rateOfReturn={rateOfReturn}
+                        setRateOfReturn={setRateOfReturn}
+                        monthlyRetirement={monthlyRetirement}
+                        setMonthlyRetirement={setMonthlyRetirement}
                       />
                     ) : (
                       <div className="lg:max-w-md flex justify-between mt-6 mx-6 p-3">
@@ -366,11 +406,7 @@ const CaculatorContainer = ({ user }) => {
                             <span>{convert(retireFund)}</span>
                           </span>
                           <div className="flex-row">
-                            <CustomBarChart
-                              total={retireFundNeeded}
-                              colored={retireFund}
-                            />
-                            {/* <Chart number={retireFund} /> */}
+                            <StaticBar totalHeight={200} ratio={ratio} />
                           </div>
                           <span
                             className="text-black text-opacity-70 flex-col"
@@ -390,11 +426,11 @@ const CaculatorContainer = ({ user }) => {
                             <span>{convert(retireFundNeeded)}</span>
                           </span>
                           <div className="flex-row">
-                            {/* <Chart number={retireFundNeeded} /> */}
-                            <CustomBarChart
+                            <Chart number={retireFundNeeded} />
+                            {/* <CustomBarChart
                               total={retireFundNeeded}
-                              colored={retireFund}
-                            />
+                              colored={retireFundNeeded}
+                            /> */}
                           </div>
                           <span
                             className="text-black text-opacity-70"
