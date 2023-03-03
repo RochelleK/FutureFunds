@@ -107,6 +107,82 @@ const CaculatorContainer = ({ user }) => {
   function currencyFormat(num) {
     return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
+console.log("ratio")
+console.log(ratio)
+const OptionComponent = ({ option }) => {
+  switch (true) {
+    case option <= 0.33:
+      return (
+        <div>
+          <h2
+            className="mt-5 mb-2 text-xl text-black font-heading font-medium text-left"
+            contenteditable="false"
+          >
+            Let's get Future You
+            <span className="text-red-500 font-extrabold">
+              {" "}
+              out of the red.
+            </span>
+          </h2>
+          <p className="mb-5 text-sm text-black font-heading font-small text-left max-w-lg">
+            There are a few steps you could take to jumpstart your retirement
+            savings. See below how small tweaks to your spending habits can have
+            a big effect.
+          </p>
+        </div>
+      );
+    case (option > 0.33 && option <= 0.66):
+      return (
+        <div>
+          <h2
+            className="mt-5 mb-2 text-xl text-black font-heading font-medium text-left"
+            contenteditable="false"
+          >
+            Solid start, but let's 
+            <span className="text-yellow-500 font-extrabold">
+              {" "}
+              close the gap.
+            </span>
+          </h2>
+          <p className="mb-5 text-sm text-black font-heading font-small text-left max-w-lg">
+            There are a few steps you could take to jumpstart your retirement
+            savings. See below how small tweaks to your spending habits can have
+            a big effect.
+          </p>
+        </div>
+      );
+    case option > 0.66 && option <= 0.99:
+      return (
+        <div>
+          <h2
+            className="mt-5 mb-2 text-xl text-black font-heading font-medium text-left"
+            contenteditable="false"
+          >
+            You're close. Let's 
+            <span className="text-green-500 font-extrabold">
+              {" "}
+              get you on track.
+            </span>
+          </h2>
+          <p className="mb-5 text-sm text-black font-heading font-small text-left max-w-lg">
+            There are a few steps you could take to jumpstart your retirement
+            savings. See below how small tweaks to your spending habits can have
+            a big effect.
+          </p>
+        </div>
+      );
+
+    case option > 1:
+      return <p>Your done</p>;
+    default:
+      return <p>Please select an option.</p>;
+  }
+};
+
+// usage example
+const selectedOption = "option3";
+
+
 
   return (
     <div>
@@ -114,7 +190,7 @@ const CaculatorContainer = ({ user }) => {
       <section class="pt-12 overflow-hidden bg-gray-100">
         <div class="container px-4 mx-auto ">
           {/* <div class="w-full px-4 mb-14 md:mb-0 justify-center"> */}
-          <div class="py-12 bg-white rounded-xl w-full">
+          <div class="py-12 bg-white rounded-xl w-5/6">
             <div className="flex px-8">
               <div class="xl:px-10">
                 <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
@@ -131,9 +207,9 @@ const CaculatorContainer = ({ user }) => {
               </div>
             </div>
             <div className="flex flex-wrap justify-end lg:justify-start ml-1 pb-14 mb-14 xl:pb-28 xl:mb-24 border-b border-black border-opacity-10">
-              <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full px-2 mb-2 lg:mb-0  border-red-300 border-4 border-opacity-100">
-                <div className="w-full md:w-1/3 px-4 pl-2  border-green-300 border-4 border-opacity-100 overflow-auto h-[48rem]">
-                  <div className="lg:max-w-md ml-8 border-gray border-2 border-opacity-50 p-3">
+              <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full px-2 mb-2 lg:mb-0  border-red-300 border-4 border-opacity-100 bg-gray-300">
+                <div className="w-full md:w-5/12 px-4 pl-2 bg-zinc-100  border-green-300 border-4 border-opacity-100 overflow-auto h-[48rem]">
+                  <div className="lg:max-w-md ml-8 bg-white border-gray border-2 border-opacity-50 p-3">
                     <div className="mb-8 ">
                       <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
                         Your Age:&nbsp;
@@ -385,7 +461,7 @@ const CaculatorContainer = ({ user }) => {
                   </div>
                 </div>
                 {/* <div className="w-full md:w-1/2 lg:w-4/12 xl:w-1/2 px-4"> */}
-                <div className="pt-11 pb-11 bg-purple-50 rounded-md ">
+                <div className="pt-11 pb-11 bg-purple-50 rounded-md w-7/12">
                   {/* <div className="border-b border-opacity-20"> */}
                   <div className="px-10 pb-7 ">
                     <h3
@@ -474,42 +550,10 @@ const CaculatorContainer = ({ user }) => {
                     >
                       getting close
                     </div>
-                    {() => {
-                      switch (level) {
-                        case "red":
-                          // code block
-                          return <p>hello red</p>;
-                          break;
-                        case "yellow":
-                          // code block
-                          break;
-                        case "green":
-                          // code block
-                          break;
-                        default:
-                          // code block
-                          return <p>hello other</p>;
-                      }
-                    }}
-
-                    {/* </div> */}
                   </div>
                   <div className="px-10 pb-0">
-                    <h2
-                      className="mt-5 mb-2 text-xl text-black font-heading font-medium text-left"
-                      contenteditable="false"
-                    >
-                      Let's get Future You
-                      <span className="text-red-500 font-extrabold">
-                        {" "}
-                        out of the red.
-                      </span>
-                    </h2>
-                    <p className="mb-5 text-sm text-black font-heading font-small text-left max-w-lg">
-                      There are a few steps you could take to jumpstart your
-                      retirement savings. See below how small tweaks to your
-                      spending habits can have a big effect.
-                    </p>
+                    <OptionComponent option={ratio} />;
+                    
                   </div>
                   <div className="px-10 mx-auto md:max-w-max">
                     <Link to="/items">
