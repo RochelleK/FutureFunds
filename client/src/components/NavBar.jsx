@@ -63,7 +63,7 @@ const NavBar = () => {
               height="16"
               viewBox="0 0 25 16"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              // xmlns="http://www.w3.org/2000/svg"
             >
               <rect width="25" height="2" fill="currentColor"></rect>
               <rect y="14" width="25" height="2" fill="currentColor"></rect>
@@ -77,7 +77,7 @@ const NavBar = () => {
               <a className="text-2xl text-gray-800 font-bold" href="#">
                 <img
                   className="h-12"
-                  src="uinel-assets/logos/uinel-gray-black.svg"
+                  // src="uinel-assets/logos/uinel-gray-black.svg"
                   alt=""
                 />
               </a>
@@ -86,7 +86,7 @@ const NavBar = () => {
               <a className="flex items-center ml-1" href="#">
                 <img
                   className="ml-6"
-                  src="uinel-assets/elements/navigations/avatar-online.png"
+                  // src="uinel-assets/elements/navigations/avatar-online.png"
                   alt=""
                 />
                 <img
