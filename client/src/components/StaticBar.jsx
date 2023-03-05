@@ -16,7 +16,7 @@ const StaticBar = ({ totalHeight, ratio }) => {
       <XAxis dataKey="name" hide={true} />
       <YAxis type="number" domain={[0, 1]} hide={true} />
       <Bar dataKey="value" barSize={maxBarHeight} background={{ fill: "#eee" }}>
-        <Cell fill="#82ca9d" />
+        <Cell fill="#fc6f56" />
       </Bar>
     </BarChart>
   );

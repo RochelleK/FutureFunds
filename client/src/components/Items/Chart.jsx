@@ -15,16 +15,14 @@ const Chart = ({number}) => {
     
 
 return (
-    <div className='w-100 h-100'>
-      {/* <ResponsiveContainer width="100%" height="100%"> */}
-        <BarChart width={150} height={200} data={data}>
-          <Bar dataKey="uv" fill="#8884d8" />
-        </BarChart>
-      {/* </ResponsiveContainer> */}
-
-            
-        </div>
-    );
+  <div className="w-100 h-100">
+    {/* <ResponsiveContainer width="100%" height="100%"> */}
+    <BarChart width={150} height={200} data={data}>
+      <Bar dataKey="uv" fill="#8bbd4b" />
+    </BarChart>
+    {/* </ResponsiveContainer> */}
+  </div>
+);
 };
 
 export default Chart;

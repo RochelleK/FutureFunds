@@ -7,6 +7,7 @@ import Tooltip from "./ToolTip";
 import CustomBarChart from "./CustomBarChart";
 import Optional from "./Optional";
 import StaticBar from "./StaticBar";
+import OptionComponent from "./OptionComponent";
 
 const CaculatorContainer = ({ user }) => {
   const [age, setAge] = useState(35);
@@ -27,6 +28,8 @@ const CaculatorContainer = ({ user }) => {
   );
   const [level, setLevel] = useState("red");
   const [isOptional, setIsOptional] = useState(false);
+  const [triangle, setTriangle] = useState(610);
+  const [textPadding, setTextPadding] = useState(80);
 
   const changeOption = () => {
     setIsOptional(!isOptional);
@@ -64,10 +67,10 @@ const CaculatorContainer = ({ user }) => {
     );
   };
 
-  const ratio = retireFund / retireFundNeeded
+  const ratio = retireFund / retireFundNeeded;
   const styles1 = (color) => {
     if (retireFund / retireFundNeeded < 0.33)
-      return `bg-${color}-500 border-8 border-red-300 `;
+      return `bg-${color}-500 border-white`;
     else return `bg-red-100`;
   };
   const styles2 = (color) => {
@@ -75,21 +78,19 @@ const CaculatorContainer = ({ user }) => {
       retireFund / retireFundNeeded > 0.33 &&
       retireFund / retireFundNeeded < 0.66
     )
-      return `bg-${color}-500 border-8 border-yellow-300 `;
+      return `bg-${color}-500 border-white `;
     else return `bg-${color}-200`;
   };
   const styles3 = (color) => {
     if (retireFund / retireFundNeeded > 0.66)
-      return `bg-${color}-500 border-8 border-green-300`;
+      return `bg-${color}-500 border-green-300`;
     else return `bg-${color}-200`;
   };
 
   useEffect(() => {
     setRetireFund(compound);
-    // setRetireFundNeeded(income * 28);
-    console.log(retireFund);
+    setRetireFundNeeded((parseInt(income) * 0.8) / 0.04);
   }, [age, income, savings, monthly]);
-  console.log("user " + user);
 
   function convert(labelValue) {
     // Nine Zeroes for Billions
@@ -107,82 +108,10 @@ const CaculatorContainer = ({ user }) => {
   function currencyFormat(num) {
     return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
-console.log("ratio")
-console.log(ratio)
-const OptionComponent = ({ option }) => {
-  switch (true) {
-    case option <= 0.33:
-      return (
-        <div>
-          <h2
-            className="mt-5 mb-2 text-xl text-black font-heading font-medium text-left"
-            contenteditable="false"
-          >
-            Let's get Future You
-            <span className="text-red-500 font-extrabold">
-              {" "}
-              out of the red.
-            </span>
-          </h2>
-          <p className="mb-5 text-sm text-black font-heading font-small text-left max-w-lg">
-            There are a few steps you could take to jumpstart your retirement
-            savings. See below how small tweaks to your spending habits can have
-            a big effect.
-          </p>
-        </div>
-      );
-    case (option > 0.33 && option <= 0.66):
-      return (
-        <div>
-          <h2
-            className="mt-5 mb-2 text-xl text-black font-heading font-medium text-left"
-            contenteditable="false"
-          >
-            Solid start, but let's 
-            <span className="text-yellow-500 font-extrabold">
-              {" "}
-              close the gap.
-            </span>
-          </h2>
-          <p className="mb-5 text-sm text-black font-heading font-small text-left max-w-lg">
-            There are a few steps you could take to jumpstart your retirement
-            savings. See below how small tweaks to your spending habits can have
-            a big effect.
-          </p>
-        </div>
-      );
-    case option > 0.66 && option <= 0.99:
-      return (
-        <div>
-          <h2
-            className="mt-5 mb-2 text-xl text-black font-heading font-medium text-left"
-            contenteditable="false"
-          >
-            You're close. Let's 
-            <span className="text-green-500 font-extrabold">
-              {" "}
-              get you on track.
-            </span>
-          </h2>
-          <p className="mb-5 text-sm text-black font-heading font-small text-left max-w-lg">
-            There are a few steps you could take to jumpstart your retirement
-            savings. See below how small tweaks to your spending habits can have
-            a big effect.
-          </p>
-        </div>
-      );
-
-    case option > 1:
-      return <p>Your done</p>;
-    default:
-      return <p>Please select an option.</p>;
-  }
-};
-
-// usage example
-const selectedOption = "option3";
-
-
+  console.log("ratio");
+  console.log(ratio);
+  
+  const selectedOption = "option3";
 
   return (
     <div>
@@ -190,7 +119,7 @@ const selectedOption = "option3";
       <section class="pt-12 overflow-hidden bg-gray-100">
         <div class="container px-4 mx-auto ">
           {/* <div class="w-full px-4 mb-14 md:mb-0 justify-center"> */}
-          <div class="py-12 bg-white rounded-xl w-5/6">
+          <div class="py-12 bg-white rounded-xl w-full border-4 border-red-500">
             <div className="flex px-8">
               <div class="xl:px-10">
                 <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
@@ -206,10 +135,10 @@ const selectedOption = "option3";
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap justify-end lg:justify-start ml-1 pb-14 mb-14 xl:pb-28 xl:mb-24 border-b border-black border-opacity-10">
-              <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full px-2 mb-2 lg:mb-0  border-red-300 border-4 border-opacity-100 bg-gray-300">
-                <div className="w-full md:w-5/12 px-4 pl-2 bg-zinc-100  border-green-300 border-4 border-opacity-100 overflow-auto h-[48rem]">
-                  <div className="lg:max-w-md ml-8 bg-white border-gray border-2 border-opacity-50 p-3">
+            <div className="flex flex-wrap justify-end lg:justify-start ml-1 pb-14 mb-14 xl:pb-28 xl:mb-24 border-b border-black border-opacity-20 border-2">
+              <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full mb-2 lg:mb-0  border-red-300 border-opacity-100">
+                <div className="w-full md:w-4/12 px-4 bg-zinc-200  border-green-300 border-opacity-100 overflow-auto h-[52rem] py-4">
+                  <div className="lg:max-w-md ml-2 bg-white border-gray border-2 border-opacity-50 p-3">
                     <div className="mb-8 ">
                       <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
                         Your Age:&nbsp;
@@ -424,7 +353,7 @@ const selectedOption = "option3";
                       </div>
                     </div>
                   </div>
-                  <div className="lg:max-w-md ml-8 border-2 border-gray border-opacity-100 mt-4">
+                  <div className="lg:max-w-md ml-2 bg-white border-2 border-gray border-opacity-100 mt-4">
                     {isOptional ? (
                       <Optional
                         age={age}
@@ -461,7 +390,7 @@ const selectedOption = "option3";
                   </div>
                 </div>
                 {/* <div className="w-full md:w-1/2 lg:w-4/12 xl:w-1/2 px-4"> */}
-                <div className="pt-11 pb-11 bg-purple-50 rounded-md w-7/12">
+                <div className="pt-11 pb-11 bg-white w-8/12">
                   {/* <div className="border-b border-opacity-20"> */}
                   <div className="px-10 pb-7 ">
                     <h3
@@ -522,43 +451,69 @@ const selectedOption = "option3";
                   {/* </div> */}
                   <div className="px-10 pb-0">
                     <h2
-                      className="mb-5 text-2xl text-black font-heading font-medium text-left"
+                      className="mb-3 text-2xl text-black font-heading font-extrabold text-left"
                       contenteditable="false"
                     >
                       Retirement savings score
                     </h2>
                   </div>
-                  <div className="flex justify-center">
-                    <div
-                      className={`${styles1(
-                        "red"
-                      )} flex-row w-1/4 px-5 py-3 text-sm leading-9 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-red-300`}
+                  <div className={`pr-10 pb-0 pl-[150px]`}>
+                    <h2
+                      className="mt-5 text-xl text-black font-extrabold font-heading  text-left "
+                      contenteditable="false"
                     >
-                      Falling behind
+                      You're {parseInt(ratio * 100)}% to goal
+                    </h2>
+                  </div>
+                  <div className="relative">
+                    <div
+                      className={`h-8 w-8 absolute top-0 left-[${triangle}px] z-10`}
+                    >
+                      <img src="./noun-triangle-down-2041941-FFFFFF.svg" />
                     </div>
-                    <div
-                      className={`${styles2(
-                        "yellow"
-                      )}flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-yellow-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 mx-1 text-yellow-400`}
-                    >
-                      on your way
-                    </div>
-                    <div
-                      className={`${styles3(
-                        "green"
-                      )}flex-row w-1/4 px-5 py-3 text-sm leading-9 bg-green-100 border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-m my-2 text-green-400`}
-                    >
-                      getting close
+                    <div className="flex justify-center ">
+                      <div
+                        className={`${styles1(
+                          "red"
+                        )} flex-row w-4/12 pt-6 text-lg text-left pl-4 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-lg my-2 ml-10 text-white font-bold bg-[#fc6f56ff]`}
+                      >
+                        Falling behind
+                      </div>
+                      <div
+                        className={`${styles2(
+                          "yellow"
+                        )}flex-row w-3/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#fdc930ff] border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-lg my-2 mx-1 text-white font-bold `}
+                      >
+                        on your way
+                      </div>
+                      <div
+                        className={`${styles3(
+                          "green"
+                        )}flex-row w-3/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#4baccbff] border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-lg my-2 mr-1 text-white font-bold`}
+                      >
+                        getting close
+                      </div>
+                      <div
+                        className={`${styles3(
+                          "green"
+                        )}flex-row w-2/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#8bbd4bff] border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-lg my-2 mr-10 text-white font-bold`}
+                      >
+                        close
+                      </div>
                     </div>
                   </div>
                   <div className="px-10 pb-0">
-                    <OptionComponent option={ratio} />;
-                    
+                    <OptionComponent
+                      option={ratio}
+                      setTriangle={setTriangle}
+                      textPadding={textPadding}
+                      setTextPadding={setTextPadding}
+                    />
                   </div>
                   <div className="px-10 mx-auto md:max-w-max">
                     <Link to="/items">
                       <a
-                        className="block py-5 px-10 w-full text-xl leading-6 font-medium tracking-tighter font-heading text-center bg-blue-300 hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
+                        className="block py-5 px-10 w-full text-xl text-white leading-6 font-medium tracking-tighter font-heading text-center bg-[#018254] hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
                         href="#"
                         contenteditable="false"
                       >
