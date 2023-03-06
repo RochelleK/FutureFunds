@@ -30,17 +30,18 @@ const Optional = ({
           <img src="./noun-top-arrow-3012854.svg" onClick={changeOption} />
         </div>
       </div>
+        <div className="h-px bg-gray-300 mx-10 mb-6"></div>
       <div className="mb-8 ">
         <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
           I want to retire at age:&nbsp;
           <Tooltip text="Most people go with 67. Of course, the longer you work, the more you can save.">
-                  <span className="text-blue-500 cursor-pointer">
-                    <img
-                      src="./noun-question-mark-2660318.svg"
-                      className="w-5 h-5 object-contain"
-                    />
-                  </span>
-                </Tooltip>
+            <span className="text-blue-500 cursor-pointer">
+              <img
+                src="./noun-question-mark-2660318.svg"
+                className="w-5 h-5 object-contain"
+              />
+            </span>
+          </Tooltip>
         </label>
         <input
           className="w-full px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
@@ -52,12 +53,12 @@ const Optional = ({
       </div>
       <div className="mb-8">
         <label className="block mb-4 text-lg text-blue-500 text-left">
-          Pre-tax income
+          Monthly retirement spending
         </label>
         <div class="flex items-center">
           <button
             class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
-            onClick={() => setIncome(income - 1000)}
+            onClick={() => setMonthlyRetirement(monthlyRetirement - 1000)}
           >
             <svg
               width="10"
@@ -79,13 +80,15 @@ const Optional = ({
           <input
             className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
             type="number"
-            value={`${income}`}
-            onChange={(e) => setIncome(parseInt(e.target.value) || 0)}
+            value={`${monthlyRetirement}`}
+            onChange={(e) =>
+              setMonthlyRetirement(parseInt(e.target.value) || 0)
+            }
           />
 
           <button
             class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
-            onClick={() => setIncome(income + 1000)}
+            onClick={() => setMonthlyRetirement(monthlyRetirement + 1000)}
           >
             <svg
               width="10"
@@ -115,12 +118,12 @@ const Optional = ({
       </div>
       <div className="mb-8">
         <label className="block mb-4 text-lg text-blue-550 text-left">
-          Current Savings:&nbsp;
+          Life expectancy&nbsp;
         </label>
         <div class="flex items-center">
           <button
             class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
-            onClick={() => setSavings(savings - 1000)}
+            onClick={() => setDeathAge(deathAge - 1)}
           >
             <svg
               width="10"
@@ -141,12 +144,12 @@ const Optional = ({
           <input
             className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
             type="number"
-            value={savings}
-            onChange={(e) => setSavings(parseInt(e.target.value) || 0)}
+            value={deathAge}
+            onChange={(e) => setDeathAge(parseInt(e.target.value) || 0)}
           />
           <button
             class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
-            onClick={() => setSavings(savings + 1000)}
+            onClick={() => setDeathAge(deathAge + 1)}
           >
             <svg
               width="10"
@@ -176,12 +179,12 @@ const Optional = ({
       </div>
       <div>
         <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
-          Every month I save:&nbsp;
+          Investment rate of return:&nbsp;
         </label>
         <div class="flex items-center">
           <button
             class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
-            onClick={() => setMonthly(monthly - 50)}
+            onClick={() => setRateOfReturn(rateOfReturn - 0.5)}
           >
             <svg
               width="10"
@@ -202,12 +205,12 @@ const Optional = ({
           <input
             className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
             type="number"
-            value={monthly}
-            onChange={(e) => setMonthly(parseInt(e.target.value) || 0)}
+            value={rateOfReturn}
+            onChange={(e) => setRateOfReturn(parseInt(e.target.value) || 0)}
           />
           <button
             class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
-            onClick={() => setMonthly(monthly + 50)}
+            onClick={() => setRateOfReturn(rateOfReturn + 0.5)}
           >
             <svg
               width="10"

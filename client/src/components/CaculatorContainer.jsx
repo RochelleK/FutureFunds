@@ -8,6 +8,8 @@ import CustomBarChart from "./CustomBarChart";
 import Optional from "./Optional";
 import StaticBar from "./StaticBar";
 import OptionComponent from "./OptionComponent";
+import CurrencyInput from "react-currency-masked-input";
+
 
 const CaculatorContainer = ({ user }) => {
   const [age, setAge] = useState(35);
@@ -26,7 +28,6 @@ const CaculatorContainer = ({ user }) => {
   const [retireFundNeeded, setRetireFundNeeded] = useState(
     (parseInt(income) * 0.8) / 0.04
   );
-  const [level, setLevel] = useState("red");
   const [isOptional, setIsOptional] = useState(false);
   const [triangle, setTriangle] = useState(610);
   const [textPadding, setTextPadding] = useState(80);
@@ -34,6 +35,7 @@ const CaculatorContainer = ({ user }) => {
   const changeOption = () => {
     setIsOptional(!isOptional);
   };
+  const num1 = 10000
 
   // const formattedValue =(input)=> input.toLocaleString("en-US", {
   //     style: "currency",
@@ -44,13 +46,31 @@ const CaculatorContainer = ({ user }) => {
     const inputValue = event.target.value;
     const numericValue = parseFloat(inputValue.replace(/[^0-9.-]+/g, "")) || 0; // remove non-numeric characters and convert to number
     setState(numericValue);
-    setDisplayState(
-      event.target.value.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
-      })
-    );
+    const formattedValue = numericValue.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+    event.target.value = formattedValue;
+    // setDisplayState(
+    //   event.target.value.toLocaleString("en-US", {
+    //     style: "currency",
+    //     currency: "USD",
+    //   })
+    // );
   };
+  const handleChange = (e, setState) => {
+    setState(e.target.value); 
+  };
+
+  const currencyMask = (e) => {
+    let value = e.target.value; 
+    value = value.replace(/\D/g, "")
+    value = value.replace(/(\d)(\d{2})$/,"$1, $2"); 
+    value = value.replace(/(?=(\d{3})+(\D))\B/g, ","); 
+    e.target.value = value; 
+    return e; 
+
+  }
 
   const formattedValue = income.toLocaleString("en-US", {
     style: "currency",
@@ -90,7 +110,7 @@ const CaculatorContainer = ({ user }) => {
   useEffect(() => {
     setRetireFund(compound);
     setRetireFundNeeded((parseInt(income) * 0.8) / 0.04);
-  }, [age, income, savings, monthly]);
+  }, [age, income, savings, monthly, retirementAge, rateOfReturn, deathAge, monthlyRetirement]);
 
   function convert(labelValue) {
     // Nine Zeroes for Billions
@@ -119,7 +139,7 @@ const CaculatorContainer = ({ user }) => {
       <section class="pt-12 overflow-hidden bg-gray-100">
         <div class="container px-4 mx-auto ">
           {/* <div class="w-full px-4 mb-14 md:mb-0 justify-center"> */}
-          <div class="py-12 bg-white rounded-xl w-full border-4 border-red-500">
+          <div class="py-12 bg-white rounded-xl w-full border-0 border-red-500">
             <div className="flex px-8">
               <div class="xl:px-10">
                 <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
@@ -162,7 +182,8 @@ const CaculatorContainer = ({ user }) => {
                     <div className="mb-8">
                       <label className="block mb-4 text-lg text-blue-500 text-left">
                         Pre-tax income
-                        {/* {`${num1.toLocaleString("en-US", { style: "currency", currency: "USD" })}`} */}
+                        {`${currencyFormat(num1)}`}
+                        {`${num1.toLocaleString("en-US", { style: "currency", currency: "USD" })}`}
                       </label>
                       <div class="flex items-center">
                         <button
@@ -186,14 +207,17 @@ const CaculatorContainer = ({ user }) => {
                           </svg>
                         </button>
 
-                        <input
+                        <CurrencyInput
                           className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
-                          type="number"
+                          type="text"
+                          // value={formattedValue}
+                          
                           value={income}
-                          onChange={(e) =>
-                            setIncome(parseInt(e.target.value) || 0)
-                          }
-                          // onChange={(e) => handleInputChange(e, setIncome)}
+                          // onChange={(e) =>handleChange(currencyMask(e), setIncome )
+                            // setIncome(parseInt(e.target.value) || 0)
+                            
+                          // }
+                          onChange={(e) => handleInputChange(e, setIncome)}
                         />
 
                         <button
@@ -397,7 +421,7 @@ const CaculatorContainer = ({ user }) => {
                       className="mb-5 text-3xl text-black font-heading font-medium text-left"
                       contenteditable="false"
                     >
-                      How much will you need to retire at 67?
+                      How much will you need to retire at {retirementAge}?
                     </h3>
                     {/* parent div */}
                     <div className="flex justify-around">
@@ -449,7 +473,9 @@ const CaculatorContainer = ({ user }) => {
                     {/* end of parent div */}
                   </div>
                   {/* </div> */}
-                  <div className="px-10 pb-0">
+                  <div className="h-px bg-gray-300 mx-20"></div>
+
+                  <div className="px-10 pb-0 pt-10">
                     <h2
                       className="mb-3 text-2xl text-black font-heading font-extrabold text-left"
                       contenteditable="false"
@@ -466,16 +492,13 @@ const CaculatorContainer = ({ user }) => {
                     </h2>
                   </div>
                   <div className="relative">
-                    <div
-                      className={`h-8 w-8 absolute top-0 ${triangle} z-10`}
-                    >
+                    <div className={`h-8 w-8 absolute top-0 ${triangle} z-10`}>
                       <img src="./noun-triangle-down-2041941-FFFFFF.svg" />
                     </div>
                     <div className="flex justify-center ">
                       <div
-                        className={`${styles1(
-                          "red"
-                        )} flex-row w-4/12 pt-6 text-lg text-left pl-4 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md my-2 ml-10 text-white font-bold bg-[#fc6f56ff]`}
+                        className={`
+                        flex-row w-4/12 pt-6 text-lg text-left pl-4 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md my-2 ml-10 text-white font-bold bg-[#fc6f56ff]`}
                       >
                         Needs attention
                       </div>
