@@ -457,7 +457,7 @@ const CaculatorContainer = ({ user }) => {
                       Retirement savings score
                     </h2>
                   </div>
-                  <div className={`pr-10 pb-0 pl-[150px]`}>
+                  <div className={`pr-10 pb-0 ${textPadding}`}>
                     <h2
                       className="mt-5 text-xl text-black font-extrabold font-heading  text-left "
                       contenteditable="false"
@@ -467,7 +467,7 @@ const CaculatorContainer = ({ user }) => {
                   </div>
                   <div className="relative">
                     <div
-                      className={`h-8 w-8 absolute top-0 left-[${triangle}px] z-10`}
+                      className={`h-8 w-8 absolute top-0 ${triangle} z-10`}
                     >
                       <img src="./noun-triangle-down-2041941-FFFFFF.svg" />
                     </div>
@@ -475,30 +475,30 @@ const CaculatorContainer = ({ user }) => {
                       <div
                         className={`${styles1(
                           "red"
-                        )} flex-row w-4/12 pt-6 text-lg text-left pl-4 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-lg my-2 ml-10 text-white font-bold bg-[#fc6f56ff]`}
+                        )} flex-row w-4/12 pt-6 text-lg text-left pl-4 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md my-2 ml-10 text-white font-bold bg-[#fc6f56ff]`}
                       >
-                        Falling behind
+                        Needs attention
                       </div>
                       <div
                         className={`${styles2(
                           "yellow"
-                        )}flex-row w-3/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#fdc930ff] border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-lg my-2 mx-1 text-white font-bold `}
+                        )}flex-row w-3/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#fdc930ff] border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md my-2 mx-1 text-white font-bold `}
                       >
-                        on your way
+                        On your way
                       </div>
                       <div
                         className={`${styles3(
                           "green"
-                        )}flex-row w-3/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#4baccbff] border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-lg my-2 mr-1 text-white font-bold`}
+                        )}flex-row w-3/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#4baccbff] border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md my-2 mr-1 text-white font-bold`}
                       >
-                        getting close
+                        Getting close
                       </div>
                       <div
                         className={`${styles3(
                           "green"
-                        )}flex-row w-2/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#8bbd4bff] border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-lg my-2 mr-10 text-white font-bold`}
+                        )}flex-row w-2/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#8bbd4bff] border-1 border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md my-2 mr-10 text-white font-bold`}
                       >
-                        close
+                        On track
                       </div>
                     </div>
                   </div>
