@@ -424,7 +424,7 @@ const CaculatorContainer = ({ user }) => {
                       How much will you need to retire at {retirementAge}?
                     </h3>
                     {/* parent div */}
-                    <div className="flex justify-around">
+                    <div className="flex justify-center">
                       <div className="flex-row ">
                         <p
                           className="flex-col items-center justify-between leading-8 font-heading font-medium"

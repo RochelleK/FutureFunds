@@ -1,8 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+
+    fetch(`/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        console.log(data);
+      })
+      .then(navigate("/calc"));
+  };
+
   return (
     <div>
       <NavBar />
@@ -10,9 +39,9 @@ const SignUp = () => {
         className="relative pt-16 md:py-32 bg-white"
         //   style="background-image: url('flex-ui-assets/elements/pattern-white.svg'); background-position: center;"
       >
-        <div className="container px-4 mx-auto mb-16 md:mb-0">
+        <div className="container px-4 mx-auto mb-16 md:mb-0 border-2 border-[#8bbd4bff] p-6 rounded-md">
           <div className="w-full md:w-1/2 md:pr-4">
-            <div className="max-w-sm mx-auto">
+            <div className="max-w-sm mx-auto ">
               <div className="mb-6 text-center">
                 <a className="inline-block mb-6" href="#">
                   <img
@@ -46,7 +75,9 @@ const SignUp = () => {
                     className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
                     type="name"
                     placeholder="Name"
-                    contenteditable="false"
+                    name="name"
+                    value={formData.name}
+                    onChange={(e) => handleChange(e)}
                   />
                 </div>
                 <div className="mb-6">
@@ -60,6 +91,9 @@ const SignUp = () => {
                     className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
                     type="name"
                     placeholder="example@example.com"
+                    name="email"
+                    value={formData.email}
+                    onChange={(e) => handleChange(e)}
                   />
                 </div>
                 <div className="mb-4">
@@ -73,12 +107,16 @@ const SignUp = () => {
                     className="appearance-none block w-full p-3 leading-5 text-coolGray-900 border border-coolGray-200 rounded-lg shadow-md placeholder-coolGray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
                     type="password"
                     placeholder="************"
+                    name="password"
+                    value={formData.password}
+                    onChange={(e) => handleChange(e)}
                   />
                 </div>
 
                 <a
                   className="inline-block py-3 px-7 mb-4 w-full text-base text-green-50 font-medium text-center leading-6 bg-[#8bbd4bff] hover:bg-green-600 focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md shadow-sm"
                   href="#"
+                  onClick={handleSubmit}
                 >
                   Sign Up
                 </a>
@@ -87,12 +125,14 @@ const SignUp = () => {
                   <span className="text-xs font-medium">
                     Already have an account?
                   </span>
-                  <a
-                    className="inline-block text-xs font-medium text-[#8bbd4bff] hover:text-green-600 hover:underline"
-                    href="#"
-                  >
-                    Sign In
-                  </a>
+                  <Link to={"/signin"}>
+                    <a
+                      className="inline-block text-xs font-medium text-[#8bbd4bff] hover:text-green-600 hover:underline"
+                      href="#"
+                    >
+                      Sign In
+                    </a>
+                  </Link>
                 </p>
               </form>
             </div>

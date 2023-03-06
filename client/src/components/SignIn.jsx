@@ -140,12 +140,14 @@ const signIn = (e) => {
                 <span className="text-xs font-medium">
                   Don’t have an account?
                 </span>
+                <Link to={ "/signup"}>
                 <a
                   className="inline-block text-xs font-medium text-[#8bbd4bff] hover:text-green-600 hover:underline"
                   href="#"
-                >
+                  >
                   Sign up
                 </a>
+                  </Link>
               </p>
             </form>
           </div>
