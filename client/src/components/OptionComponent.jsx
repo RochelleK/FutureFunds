@@ -43,7 +43,7 @@ const OptionComponent = ({
 
       return (
         <div>
-          <Message1 />
+          <Message2 />
         </div>
       );
     case option > 0.5 && option <= 0.599999:

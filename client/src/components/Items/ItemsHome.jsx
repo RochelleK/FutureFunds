@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ItemsCardContainer from "./ItemsCardContainer";
-import NavBar from "../NavBar";
+import NavBar2 from "../NavBar2";
 import Budget from "./Budget";
 
 const ItemsHome = ({ user, yourBudget, setYourBudget }) => {
@@ -28,7 +28,7 @@ const ItemsHome = ({ user, yourBudget, setYourBudget }) => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar2 />
       <div className="container px-4 mx-auto">
         <div className="mb-2">
           <h2 className="font-heading font-medium text-4xl md:text-10xl xl:text-5xl leading-tight text-left">

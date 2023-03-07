@@ -39,23 +39,32 @@ const PieCharts = ({num1, num2}) => {
     );
   };
   return (
-    <div>
-      <PieChart width={400} height={400}>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomizedLabel}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
+    <div className="w-full md:w-1/2 lg:w-1/3">
+        <div className="mx-auto">
+      <PieChart 
+      width={400} height={400} 
+      className="w-full">
+        <ResponsiveContainer width="100%" className="h-40 md:h-32 lg:h-24">
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            >
+            {data.map((entry, index) => (
+              <Cell
+              key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+                />
+                ))}
+          </Pie>
+        </ResponsiveContainer>
       </PieChart>
+                </div>
     </div>
   );
 };

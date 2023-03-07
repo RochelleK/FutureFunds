@@ -49,6 +49,10 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
   return (
     <div className="flex-shrink-0 p-3 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
       <div className="p-10 xl:px-9 xl:pt-24 xl:pb-12 h-full bg-gray-100 rounded-3xl">
+        <p className="flex items-center text-xl text-blue-500 font-heading font-medium tracking-tighter flex-col">
+          <div>Price Today</div>
+          <div>${item.price}</div>
+        </p>
         <a className="block mx-auto mb-8 xl:mb-20 max-w-max" href="#">
           <img
             className="h-40 object-cover"
@@ -56,26 +60,26 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
             alt=""
           />
         </a>
+        
         <a href="#">
-          <p className="mb-4 text-xl leading-8 font-heading font-medium hover:underline">
+
+          <p className="mb-2 text-xl leading-8 font-heading font-medium hover:underline">
             {item?.name}
           </p>
         </a>
-        <PieCharts
-          num1={item.price}
-          num2={parseInt(calculateCompoundInterest(principal, rate, time, periods))}
-        />
+        <div className="flex items-center h-1/2" >
+        <div  className="items-center" >
+          <PieCharts
+            num1={item.price}
+            num2={parseInt(
+              calculateCompoundInterest(principal, rate, time, periods)
+            )}
+          />
+        </div>
+        </div>
 
         <div className="flex selection:flex-row justify-between">
           <p className="flex items-center text-xl text-blue-500 font-heading font-medium tracking-tighter flex-col">
-            <div>${item.price}</div>
-
-            <div>Price Today</div>
-          </p>
-          <p className="flex items-center text-xl text-blue-500 font-heading font-medium tracking-tighter flex-col">
-            <div>
-              ${calculateCompoundInterest(principal, rate, time, periods)}
-            </div>
             <div>
               <span>In </span>
               <span>
@@ -89,6 +93,9 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
               </span>
               <span> Years</span>
               {/* In 30 Years */}
+              <div>
+                ${calculateCompoundInterest(principal, rate, time, periods)}
+              </div>
             </div>
           </p>
         </div>

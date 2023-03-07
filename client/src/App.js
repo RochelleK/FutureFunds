@@ -6,6 +6,7 @@ import CaculatorContainer from "./components/CaculatorContainer";
 import Home from "./components/Home";
 import ItemsHome from "./components/Items/ItemsHome";
 import NavBar from "./components/NavBar";
+import NavBar2 from "./components/NavBar2";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import TestPage from "./components/TestPage";
@@ -39,6 +40,7 @@ function App() {
           element={<SignUp setUser={setUser} user={user} />}
         />
         <Route path="/nav" element={<NavBar />} />
+        <Route path="/nav2" element={<NavBar2 setUser={setUser} />} />
         <Route
           path="/items"
           element={

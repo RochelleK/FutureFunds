@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Chart from "./Items/Chart";
-import NavBar from "./NavBar";
+import NavBar2 from "./NavBar2";
 import Tooltip from "./ToolTip";
 import CustomBarChart from "./CustomBarChart";
 import Optional from "./Optional";
@@ -135,7 +135,7 @@ const CaculatorContainer = ({ user }) => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar2 />
       <section class="pt-12 overflow-hidden bg-gray-100">
         <div class="container px-4 mx-auto ">
           {/* <div class="w-full px-4 mb-14 md:mb-0 justify-center"> */}
@@ -207,7 +207,7 @@ const CaculatorContainer = ({ user }) => {
                           </svg>
                         </button>
 
-                        <CurrencyInput
+                        <input 
                           className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
                           type="text"
                           // value={formattedValue}
@@ -510,9 +510,7 @@ const CaculatorContainer = ({ user }) => {
                         On your way
                       </div>
                       <div
-                        className={`${styles3(
-                          "green"
-                        )}flex-row w-3/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#4baccbff] border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md my-2 mr-1 text-white font-bold`}
+                        className={`flex-row w-3/12 pt-6 text-lg text-left pl-4 leading-9 bg-[#4baccbff] border-green-400 outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded-md my-2 mr-1 text-white font-bold`}
                       >
                         Getting close
                       </div>
