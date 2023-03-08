@@ -13,6 +13,16 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
         setYourBudget(data);
       });
   }, []);
+  
+  useEffect(() => {
+    fetch(`users/${user.id}/sum_items`)
+      .then((response) => response.json())
+      .then((data) => {
+        setItemsTotal(data);
+        console.log("total");
+        console.log(data);
+      });
+  }, []);
 
   const handleDelete = (id) => {
     fetch(`/lists/${id}`, {
@@ -104,24 +114,24 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                         <p></p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
-                        <p className="min-w-max">${total}</p>
+                        <p className="min-w-max">{user ? (total):("999")}</p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">
-                          $
+                          Potential Compounded Interest: $
                           {calculateCompoundInterest(
-                            principal,
+                            total,
                             rate,
                             time,
                             periods
-                          )-principal}
+                          )-total}
                         </p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">
                           $
                           {calculateCompoundInterest(
-                            principal,
+                            total,
                             rate,
                             time,
                             periods

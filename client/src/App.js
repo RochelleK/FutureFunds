@@ -14,15 +14,25 @@ function App() {
   const [user, setUser] = useState(null);
   const [yourBudget, setYourBudget] = useState([]);
 
+  // useEffect(() => {
+  //   // auto-login
+  //   const getUser = async () => {
+  //     let req = await fetch("/me");
+  //     let res = await req.json();
+  //     console.log("res", res);
+  //     setUser(res);
+  //   };
+  //   getUser();
+  // }, []);
+    
   useEffect(() => {
-    // auto-login
-    const getUser = async () => {
-      let req = await fetch("/me");
-      let res = await req.json();
-      console.log("res", res);
-      setUser(res);
-    };
-    getUser();
+    // hard code login
+    fetch("/users/1")
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        console.log(data);
+      });
   }, []);
 
   return (

@@ -4,11 +4,9 @@ class User < ApplicationRecord
     has_many :items, through: :lists 
 
      def sum_items
-        items.all
+        items.all.sum(:price)
      end 
 
-    def sum_items_with_interest
-    end 
 
 
 

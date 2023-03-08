@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   
   resources :lists
   resources :items
-  resources :users
+  resources :users 
+  # do 
+  #   get 'sum_items', on: :member
+  # end 
 
 
   post "/signup", to: "users#create"
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy" 
   
+  # get "/sum_items", to: "users#sum_items"
   
   # get "/budget", to: "lists#show"
   # Routing logic: fallback requests for React Router.

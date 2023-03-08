@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: [:create, :index, :destroy, :show]
+  skip_before_action :authorize, except: :me
 
   def index
     render json: User.all
@@ -11,14 +11,21 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
+  # def show
+  #   render json: @current_user
+  # end
+
+  #hardcoded login
   def show
-    render json: @current_user
+    user = User.first
+    render json: user
   end
 
-  # def show
-  #   total = @current_user.sum_items
-  #   render json: total
-  # end
+  def sum_items
+    @user = User.find(params[:id])
+    @total = @user.sum_items
+    render json: @total
+  end
 
   def destroy 
         user = User.find(params[:id])
@@ -26,11 +33,10 @@ class UsersController < ApplicationController
         head :no_content 
     end
 
-
   private
 
   def user_params
-    params.permit(:name, :email, :password)
+    params.permit(:name, :email, :password, :list)
   end
 
 end
