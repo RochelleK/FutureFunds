@@ -44,7 +44,7 @@ const PieCharts = ({num1, num2}) => {
       <PieChart 
       width={400} height={400} 
       className="w-full">
-        <ResponsiveContainer width="100%" className="h-40 md:h-32 lg:h-24">
+        {/* <ResponsiveContainer width="100%" className="h-40 md:h-32 lg:h-24"> */}
           <Pie
             data={data}
             cx="50%"
@@ -62,7 +62,7 @@ const PieCharts = ({num1, num2}) => {
                 />
                 ))}
           </Pie>
-        </ResponsiveContainer>
+        {/* </ResponsiveContainer> */}
       </PieChart>
                 </div>
     </div>

@@ -11,14 +11,14 @@ class UsersController < ApplicationController
     render json: user, status: :created
   end
 
-  # def show
-  #   render json: @current_user
-  # end
-
   def show
-    total = @current_user.sum_items
-    render json: total
+    render json: @current_user
   end
+
+  # def show
+  #   total = @current_user.sum_items
+  #   render json: total
+  # end
 
   def destroy 
         user = User.find(params[:id])
