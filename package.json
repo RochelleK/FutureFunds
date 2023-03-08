@@ -11,6 +11,7 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "react-currency-masked-input": "^2.5.0",
     "recharts": "^2.4.3"
   }
 }

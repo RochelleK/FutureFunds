@@ -39,7 +39,18 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
         console.log("yourBudget2");
         console.log(yourBudget);
       });
+
+      //  useEffect(() => {
+         fetch("/lists")
+           .then((response) => response.json())
+           .then((data) => {
+             setYourBudget(data);
+           });
+      //  }, []);
   };
+
+
+
 
   const newBudgetItem = {
     user_id: user?.id,
@@ -53,29 +64,29 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
           <div>Price Today</div>
           <div>${item.price}</div>
         </p>
-        <a className="block mx-auto mb-8 xl:mb-20 max-w-max" href="#">
+        <a className="block mx-auto mb-2 max-w-max" href="#">
           <img
             className="h-40 object-cover"
-            src="https://shuffle.dev/uinel-assets/images/ecommerce-product-list/phone-background-none.png"
+            // src="https://shuffle.dev/uinel-assets/images/ecommerce-product-list/phone-background-none.png"
+            src={item.image}
             alt=""
           />
         </a>
-        
-        <a href="#">
 
+        <a href="#">
           <p className="mb-2 text-xl leading-8 font-heading font-medium hover:underline">
             {item?.name}
           </p>
         </a>
-        <div className="flex items-center h-1/2" >
-        <div  className="items-center" >
-          <PieCharts
-            num1={item.price}
-            num2={parseInt(
-              calculateCompoundInterest(principal, rate, time, periods)
-            )}
-          />
-        </div>
+        <div className="flex items-center h-1/2">
+          <div className="items-center">
+            <PieCharts
+              num1={item.price}
+              num2={parseInt(
+                calculateCompoundInterest(principal, rate, time, periods)
+              )}
+            />
+          </div>
         </div>
 
         <div className="flex selection:flex-row justify-between">

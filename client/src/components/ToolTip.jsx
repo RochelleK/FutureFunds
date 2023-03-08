@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Tooltip = ({ children, text, position = "top" }) => {
+const Tooltip = ({ children, text, position = 'top' }) => {
   const [showTooltip, setShowTooltip] = React.useState(false);
 
   const handleMouseEnter = () => setShowTooltip(true);
@@ -18,7 +18,7 @@ const Tooltip = ({ children, text, position = "top" }) => {
       </div>
       {showTooltip && (
         <div
-          className={`absolute z-10 bg-black text-white p-2 rounded-md whitespace-nowrap ${
+          className={`absolute z-10 bg-white text-black font-light p-4 border-2 border-gray-300 h-min shadow-xl w-72 whitespace-normal break-words ${
             position === "top"
               ? "top-full left-1/2 transform -translate-x-1/2 -translate-y-2"
               : ""
@@ -36,6 +36,8 @@ const Tooltip = ({ children, text, position = "top" }) => {
               : ""
           }`}
         >
+          {/* <div className='border-t-4 border-green-300'>
+            </div> */}
           {text}
         </div>
       )}
@@ -46,7 +48,7 @@ const Tooltip = ({ children, text, position = "top" }) => {
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   text: PropTypes.string.isRequired,
-  position: PropTypes.oneOf(["top", "right", "bottom", "left"]),
+  position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
 };
 
 export default Tooltip;

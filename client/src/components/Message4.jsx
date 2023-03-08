@@ -14,9 +14,8 @@ const Message4 = () => {
           </span>
         </h2>
         <p className="mb-5 text-lg text-black font-heading font-small text-left leading-9">
-          There are a few steps you could take to jumpstart your retirement
-          savings. See below how small tweaks to your spending habits can have a
-          big effect.
+          Could your future be any brighter? Let’s find out. See below how small
+          tweaks to your spending habits can have a big effect.
         </p>
       </div>
     );

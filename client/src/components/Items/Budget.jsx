@@ -3,6 +3,9 @@ import BudgetItem from "./BudgetItem";
 
 const Budget = ({ yourBudget, setYourBudget, user }) => {
   const [total, setTotal] = useState(0);
+  const [itemsTotal, setItemsTotal] = useState(0);
+  const [futureItemsTotal, setFutureItemsTotal] = useState(0);
+
   useEffect(() => {
     fetch("/lists")
       .then((response) => response.json())

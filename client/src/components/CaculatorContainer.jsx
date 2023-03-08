@@ -13,11 +13,10 @@ import CurrencyInput from "react-currency-masked-input";
 
 const CaculatorContainer = ({ user }) => {
   const [age, setAge] = useState(35);
-  const [income, setIncome] = useState(100000);
+  const [income, setIncome] = useState(60000);
   const [displayIncome, setDisplayIncome] = useState(100000);
-
   const [savings, setSavings] = useState(30000);
-  const [monthly, setMonthly] = useState(1200);
+  const [monthly, setMonthly] = useState(500);
   const [retirementAge, setRetirementAge] = useState(67);
   const [deathAge, setDeathAge] = useState(95);
   const [rateOfReturn, setRateOfReturn] = useState(5);
@@ -31,6 +30,9 @@ const CaculatorContainer = ({ user }) => {
   const [isOptional, setIsOptional] = useState(false);
   const [triangle, setTriangle] = useState(610);
   const [textPadding, setTextPadding] = useState(80);
+  const [percentOfMonthly, setPercentOfMonthly] = useState(
+    ((monthly / (income / 12)) * 100
+  ).toFixed(0));
 
   const changeOption = () => {
     setIsOptional(!isOptional);
@@ -110,6 +112,9 @@ const CaculatorContainer = ({ user }) => {
   useEffect(() => {
     setRetireFund(compound);
     setRetireFundNeeded((parseInt(income) * 0.8) / 0.04);
+    setPercentOfMonthly(
+        ((monthly / (income / 12)) * 100
+        ).toFixed(0) ) 
   }, [age, income, savings, monthly, retirementAge, rateOfReturn, deathAge, monthlyRetirement]);
 
   function convert(labelValue) {
@@ -139,7 +144,7 @@ const CaculatorContainer = ({ user }) => {
       <section class="pt-12 overflow-hidden bg-gray-100">
         <div class="container px-4 mx-auto ">
           {/* <div class="w-full px-4 mb-14 md:mb-0 justify-center"> */}
-          <div class="py-12 bg-white rounded-xl w-full border-0 border-red-500">
+          <div class="py-12 bg-white rounded-xl w-full border-0 border-red-500 mb-6">
             <div className="flex px-8">
               <div class="xl:px-10">
                 <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
@@ -155,12 +160,12 @@ const CaculatorContainer = ({ user }) => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap justify-end lg:justify-start ml-1 pb-14 mb-14 xl:pb-28 xl:mb-24 border-b border-black border-opacity-20 border-2">
+            <div className="flex flex-wrap justify-end lg:justify-start ml-1 pb-0 mb-0 xl:pb-2 xl:mb-2 border-b border-black border-opacity-20 border-2 h-max mx-2">
               <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full mb-2 lg:mb-0  border-red-300 border-opacity-100">
-                <div className="w-full md:w-4/12 px-4 bg-zinc-200  border-green-300 border-opacity-100 overflow-auto h-[52rem] py-4">
+                <div className="w-full md:w-4/12 px-4 bg-zinc-200  border-green-300 border-opacity-100 overflow-auto h-[52rem] pt-4">
                   <div className="lg:max-w-md ml-2 bg-white border-gray border-2 border-opacity-50 p-3">
                     <div className="mb-8 ">
-                      <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
+                      <label className="block mb-4 text-lg font-extrabold text-black text-left">
                         Your Age:&nbsp;
                         <Tooltip text="The younger the better!">
                           <span className="text-blue-500 cursor-pointer">
@@ -180,10 +185,13 @@ const CaculatorContainer = ({ user }) => {
                       />
                     </div>
                     <div className="mb-8">
-                      <label className="block mb-4 text-lg text-blue-500 text-left">
+                      <label className="block mb-4 text-lg font-extrabold text-black text-left">
                         Pre-tax income
-                        {`${currencyFormat(num1)}`}
-                        {`${num1.toLocaleString("en-US", { style: "currency", currency: "USD" })}`}
+                        {/* {`${currencyFormat(num1)}`} */}
+                        {`${num1.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}`}
                       </label>
                       <div class="flex items-center">
                         <button
@@ -207,17 +215,21 @@ const CaculatorContainer = ({ user }) => {
                           </svg>
                         </button>
 
-                        <input 
-                          className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
+                        <input
+                          className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-y-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
                           type="text"
                           // value={formattedValue}
-                          
+
+                          // value={currencyFormat(income)}
                           value={income}
+                          onChange={(e) =>
+                            setIncome(parseInt(e.target.value) || 0)
+                          }
                           // onChange={(e) =>handleChange(currencyMask(e), setIncome )
-                            // setIncome(parseInt(e.target.value) || 0)
-                            
+                          // setIncome(parseInt(e.target.value) || 0)
+
                           // }
-                          onChange={(e) => handleInputChange(e, setIncome)}
+                          // onChange={(e) => handleInputChange(e, setIncome)}
                         />
 
                         <button
@@ -251,7 +263,7 @@ const CaculatorContainer = ({ user }) => {
                       </div>
                     </div>
                     <div className="mb-8">
-                      <label className="block mb-4 text-lg text-blue-550 text-left">
+                      <label className="block mb-4 text-lg font-extrabold text-black text-left">
                         Current Savings:&nbsp;
                       </label>
                       <div class="flex items-center">
@@ -276,7 +288,7 @@ const CaculatorContainer = ({ user }) => {
                           </svg>
                         </button>
                         <input
-                          className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
+                          className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-y-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
                           type="number"
                           value={savings}
                           onChange={(e) =>
@@ -314,8 +326,16 @@ const CaculatorContainer = ({ user }) => {
                       </div>
                     </div>
                     <div>
-                      <label className="block mb-4 text-lg text-darkBlueGray-400 text-left">
+                      <label className="block mb-4 text-lg font-extrabold text-black text-left">
                         Every month I save:&nbsp;
+                        <Tooltip text="A good savings target: 10% to start, gradually building to 15% or more.">
+                          <span className="text-blue-500 cursor-pointer">
+                            <img
+                              src="./noun-question-mark-2660318.svg"
+                              className="w-6 h-6 object-contain"
+                            />
+                          </span>
+                        </Tooltip>
                       </label>
                       <div class="flex items-center">
                         <button
@@ -339,7 +359,7 @@ const CaculatorContainer = ({ user }) => {
                           </svg>
                         </button>
                         <input
-                          className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
+                          className="w-full h-16 px-5 py-3 text-lg leading-9 bg-blue-50 border-y-2 border-blue-400 outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm"
                           type="number"
                           value={monthly}
                           onChange={(e) =>
@@ -375,6 +395,9 @@ const CaculatorContainer = ({ user }) => {
                           </svg>
                         </button>
                       </div>
+                      <label className="block mt-2 mb-4 text-lg font-light text-darkBlueGray-400 text-left">
+                        {percentOfMonthly}% of my monthly income &nbsp;
+                      </label>
                     </div>
                   </div>
                   <div className="lg:max-w-md ml-2 bg-white border-2 border-gray border-opacity-100 mt-4">
@@ -435,7 +458,17 @@ const CaculatorContainer = ({ user }) => {
                             <span>{convert(retireFund)}</span>
                           </span>
                           <div className="flex-row">
-                            <StaticBar totalHeight={200} ratio={ratio} />
+                            <Tooltip
+                              text={`Based on your projected savings and target age, you might have about ${currencyFormat(
+                                monthlyRetirement
+                              )} per month of income in retirement.`}
+                            >
+                              <StaticBar
+                                totalHeight={200}
+                                ratio={ratio}
+                                color={"#fc6f56"}
+                              />
+                            </Tooltip>
                           </div>
                           <span
                             className="text-black text-opacity-70 flex-col"
@@ -445,6 +478,7 @@ const CaculatorContainer = ({ user }) => {
                           </span>
                         </p>
                       </div>
+                      <div className="px-10"></div>
                       <div className="flex-row">
                         <p
                           className="flex-col items-center justify-between leading-8 font-heading font-medium"
@@ -455,7 +489,17 @@ const CaculatorContainer = ({ user }) => {
                             <span>{convert(retireFundNeeded)}</span>
                           </span>
                           <div className="flex-row">
-                            <Chart number={retireFundNeeded} />
+                            <Tooltip
+                              text={`If you save this amount by age ${retirementAge}, you will be able to spend ${monthlyRetirement} per month to support your living expenses in retirement.`}
+                            >
+                              <StaticBar
+                                totalHeight={200}
+                                ratio={200}
+                                color={"#8bbd4bff"}
+                              />
+                            </Tooltip>
+
+                            {/* <Chart number={retireFundNeeded} /> */}
                             {/* <CustomBarChart
                               total={retireFundNeeded}
                               colored={retireFundNeeded}
@@ -477,7 +521,7 @@ const CaculatorContainer = ({ user }) => {
 
                   <div className="px-10 pb-0 pt-10">
                     <h2
-                      className="mb-3 text-2xl text-black font-heading font-extrabold text-left"
+                      className="mb-3 text-4xl text-black font-heading font-bold text-left"
                       contenteditable="false"
                     >
                       Retirement savings score

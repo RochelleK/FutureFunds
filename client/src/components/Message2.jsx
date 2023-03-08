@@ -11,9 +11,8 @@ const Message2 = () => {
           <span className="text-[#fdc930] font-extrabold"> close the gap.</span>
         </h2>
         <p className="mb-5 text-lg text-black font-heading font-small text-left leading-9">
-          There are a few steps you could take to jumpstart your retirement
-          savings. See below how small tweaks to your spending habits can have a
-          big effect.
+          You’re off to the races, but have some catching up to do. See below how small
+          tweaks to your spending habits can have a big effect.
         </p>
       </div>
     );

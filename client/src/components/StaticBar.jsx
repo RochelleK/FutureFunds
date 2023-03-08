@@ -1,7 +1,7 @@
 import React from "react";
 import { BarChart, Bar, Cell, XAxis, YAxis } from "recharts";
 
-const StaticBar = ({ totalHeight, ratio }) => {
+const StaticBar = ({ totalHeight, ratio, color }) => {
   const data = [{ name: "", value: ratio }];
 
   const maxBarHeight = totalHeight;
@@ -16,7 +16,7 @@ const StaticBar = ({ totalHeight, ratio }) => {
       <XAxis dataKey="name" hide={true} />
       <YAxis type="number" domain={[0, 1]} hide={true} />
       <Bar dataKey="value" barSize={maxBarHeight} background={{ fill: "#eee" }}>
-        <Cell fill="#fc6f56" />
+        <Cell fill={color} />
       </Bar>
     </BarChart>
   );
