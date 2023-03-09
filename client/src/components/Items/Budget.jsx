@@ -66,8 +66,8 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
         <section className="font-normal bg-gray-100 2xl:py-10">
           <div className="container px-4 mx-auto">
             <div className="mb-8">
-              <h2 className="font-heading font-medium text-4xl md:text-10xl xl:text-5xl leading-tight">
-                {user.name}, your future starts now!
+              <h2 className="font-heading font-medium text-2xl md:text-10xl xl:text-5xl leading-tight text-left">
+                {user.name}, how much can you be saving?
               </h2>
             </div>
             <div className="overflow-x-auto">
@@ -90,9 +90,6 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">REMOVE</p>
                       </th>
-                      {/* <th className="h-20 bg-indigo-700 pr-16 px-12 text-lg font-semibold uppercase">
-                <p className="min-w-max">Feature 5</p>
-              </th> */}
                     </tr>
                   </thead>
                   <tbody className="bg-white">

@@ -83,15 +83,8 @@ const signIn = (e) => {
         // style={"background-image: url('flex-ui-assets/elements/pattern-white.svg'); background-position: center;"}
       >
         <div className="container px-4 mx-auto">
-          <div className="max-w-sm mx-auto border-2 border-[#8bbd4bff] p-6 rounded-md">
+          <div className="max-w-sm mx-auto border-2 border-[#8bbd4bff] px-10 rounded-md py-20">
             <div className="mb-6 text-center">
-              <a className="inline-block mb-6" href="#">
-                <img
-                  className="h-16"
-                  src="flex-ui-assets/logos/flex-circle-green.svg"
-                  alt=""
-                />
-              </a>
               <h3 className="mb-4 text-2xl md:text-3xl font-bold">
                 Sign in to your account
               </h3>

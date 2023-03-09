@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "seed created"
-John = User.create(name:"John", email: "a@a.com",password:'1234')
+Anna = User.create(name:"Anna", email: "a@a.com",password:'1234')
 Jacob = User.create(name:"Jacob", email: "b@b.com",password:'1234')
 Jingle = User.create(name:"Jingle", email: "c@c.com",password:'1234')
 
 
-Car = Item.create(name:"Car", price:"200", image:"./noun-car-5034962-C462DD.svg", frequency: "yearly")
-Coffee = Item.create(name:"Coffee", price:"100", image:"./noun-coffee-5571134-3B6BF9.svg", frequency: "yearly")
+Car = Item.create(name:"Car Payment +200", price:"200", image:"./noun-car-5034962-C462DD.svg", frequency: "yearly")
+Coffee = Item.create(name:"Coffee ", price:"100", image:"./noun-coffee-5571134-3B6BF9.svg", frequency: "yearly")
 Shoes = Item.create(name:"Shoes", price:"150", image:"./noun-shoes-5569483-C3DC64.svg", 
 frequency: "yearly")
 Dinner = Item.create(name:"Dinner", price:"80", image:"./noun-dinner-1879875-71D358.svg", frequency: "yearly")

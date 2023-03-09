@@ -10,6 +10,7 @@ import NavBar2 from "./components/NavBar2";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import TestPage from "./components/TestPage";
+import BudgetHome from "./components/Items/BudgetHome";
 function App() {
   const [user, setUser] = useState(null);
   const [yourBudget, setYourBudget] = useState([]);
@@ -72,6 +73,16 @@ function App() {
           }
         />
         <Route path="/test" element={<TestPage />} />
+        <Route
+          path="/budgethome"
+          element={
+            <BudgetHome
+              user={user}
+              yourBudget={yourBudget}
+              setYourBudget={setYourBudget}
+            />
+          }
+        />
         <Route
           path="/budget"
           element={
