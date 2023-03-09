@@ -25,7 +25,7 @@ const BudgetItem = ({
     // <div>
     <tr>
       <td className="text-lg h-4 px-16">
-        <h3 className="font-medium leading-4 mb-2">{item?.item?.name}</h3>
+        <h3 className="font-medium leading-4 mb-2 text-right">{item?.item?.name}</h3>
       </td>
       <td className="relative text-center h-20">
         <div className="bg-red-200 text-red-700 text-sm font-bold rounded-full px-3 py-1 flex items-center max-w-max mx-auto">
@@ -47,16 +47,16 @@ const BudgetItem = ({
           <p>${calculateCompoundInterest(principal, rate, time, periods)}</p>
         </div>
       </td>
-      <td className="relative text-center h-20">
-        <div className="text-sm font-bold rounded-full px-3 py-1 flex items-center max-w-max mx-auto">
-          <div className="mr-1 h-2 w-10">
+      <td className="relative text-center h-20 flex justify-center">
+        {/* <div className="text-sm font-bold rounded-full px-3 py-1 flex items-start max-w-max mx-auto"> */}
+          <div className="mr-1 h-2 w-10 items-baseline pt-4">
             <img
               src="./noun-trash-70641.svg"
               alt=""
               onClick={() => handleDelete(id)}
             />
           </div>
-        </div>
+        {/* </div> */}
       </td>
     </tr>
     // </div>

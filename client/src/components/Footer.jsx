@@ -2,10 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <section class="py-10 2xl:py-2 bg-gray-300 fixed bottom-0 w-full ">
+    <section class="py-10 2xl:py-2 bg-white fixed bottom-0 w-full shadow-2xl shadow-black">
       {/* <div class="container px-4 mx-auto"> */}
         <div class="md:flex m-8 mx-auto max-w-7xl md:justify-between lg:justify-start md:items-center">
-          <div class="sm:flex sm:justify-between sm:items-center mb-12 md:mb-0">
+          <div class="sm:flex sm:justify-between sm:items-center mb-12  md:mb-0">
             <a href="#">
               <img
                 class="h-12"

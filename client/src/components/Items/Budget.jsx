@@ -58,7 +58,7 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
   }, []);
 
   if (!yourBudget[0]) return null;
-  if (total===0) return null;
+  // if (total===0) return null;
 
   return (
     <div>
@@ -109,34 +109,30 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                   <thead className="text-white">
                     <tr>
                       <th className="h-20 bg-indigo-700 pl-16 px-12 text-lg font-semibold uppercase">
-                        <p></p>
+                        <p>Invest ---&gt; </p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">
-                          ${(total===0) ? (null):(total)} 
-                          {/* {if (total===0 ){
-                            return null} else {
-                              return total 
-                            }
-                          }} */}
-                          </p> 
+                          {/* ${(itemsTotal===0) ? (null):(itemsTotal)}  */}$
+                          {itemsTotal}
+                        </p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">
-                          Potential Compounded Interest: $
+                          Opportunity Cost: $
                           {calculateCompoundInterest(
-                            total,
+                            itemsTotal,
                             rate,
                             time,
                             periods
-                          )-total}
+                          ) - total}
                         </p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">
                           $
                           {calculateCompoundInterest(
-                            total,
+                            itemsTotal,
                             rate,
                             time,
                             periods
@@ -144,7 +140,7 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                         </p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
-                        <p className="min-w-max"></p>
+                        <p className="min-w-max">&lt;--- Value later!</p>
                       </th>
                     </tr>
                   </thead>

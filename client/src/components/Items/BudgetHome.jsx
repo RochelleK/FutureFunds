@@ -20,7 +20,9 @@ const BudgetHome = ({user, yourBudget, setYourBudget}) => {
             </div>
           </div>
         </section>
+        <Footer />
       </div>
+
     );
 };
 
