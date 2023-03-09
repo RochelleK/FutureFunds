@@ -9,6 +9,7 @@ import Optional from "./Optional";
 import StaticBar from "./StaticBar";
 import OptionComponent from "./OptionComponent";
 import CurrencyInput from "react-currency-masked-input";
+import Features from "./Features";
 
 
 const CaculatorContainer = ({ user }) => {
@@ -154,12 +155,12 @@ function calculateRetirementSavingsRequired(
   return (
     <div>
       <NavBar2 />
-      <section class="pt-12 overflow-hidden bg-gray-100">
+      <section class="pt-12 overflow-hidden bg-white">
         <div class="container px-4 mx-auto ">
           {/* <div class="w-full px-4 mb-14 md:mb-0 justify-center"> */}
           <div class="py-12 bg-white rounded-xl w-full border-0 border-red-500 mb-6">
             <div className="flex px-8">
-              <div class="xl:px-10">
+              <div class="">
                 <h2 className="text-7xl md:text-5xl font-heading font-medium leading-relaxed text-left">
                   Retirement Calculator
                 </h2>
@@ -173,9 +174,9 @@ function calculateRetirementSavingsRequired(
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap justify-end lg:justify-start ml-1 pb-0 mb-0 xl:pb-2 xl:mb-2 border-b border-black border-opacity-20 border-2 h-max mx-2">
-              <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full mb-2 lg:mb-0  border-red-300 border-opacity-100">
-                <div className="w-full md:w-4/12 px-4 bg-zinc-200  border-green-300 border-opacity-100 overflow-auto h-[52rem] pt-4">
+            <div className="flex flex-wrap justify-end lg:justify-start ml-1 pb-0 mb-0 border-b border-black border-opacity-20 border-2 h-max mx-2">
+              <div className="flex flex-wrap w-full lg:w-8/12 xl:w-full lg:mb-0  border-red-300 border-opacity-100">
+                <div className="w-full md:w-4/12 px-4 bg-zinc-200  border-green-300 border-opacity-100 overflow-auto h-[54rem] pt-4">
                   <div className="lg:max-w-md ml-2 bg-white border-gray border-2 border-opacity-50 p-3">
                     <div className="mb-8 ">
                       <label className="block mb-4 text-lg font-extrabold text-black text-left">
@@ -599,19 +600,15 @@ function calculateRetirementSavingsRequired(
                       </a>
                     </Link>
                   </div>
-                  {/* </div> */}
                 </div>
               </div>
             </div>
+            <Features />
           </div>
         </div>
-        {/* </div> */}
         <div class="md:w-96"></div>
-        {/* </div> */}
       </section>
-      {/* </div> */}
-      {/* </div> */}
-      {/* </section> */}
+
 
       <Footer />
     </div>

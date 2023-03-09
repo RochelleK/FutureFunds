@@ -54,9 +54,9 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
 
   return (
     <div className="flex-shrink-0 p-1 w-full">
-      <div className="p-1 xl:px-9 xl:pt-24 xl:pb-12 h-full bg-gray-100 rounded-3xl w-11/12 overflow-auto text-left">
+      <div className="p-1 xl:px-9 xl:pt-10 xl:pb-12 h-full bg-gray-100 rounded-3xl w-11/12 overflow-auto text-left">
         <a href="#">
-          <p className="mb-2 text-3xl leading-8 font-heading font-bold hover:underline ">
+          <p className="mb-2 text-3xl leading-8 font-heading font-bold hover:underline text-[#018254ff]">
             {item?.name}
           </p>
         </a>
@@ -67,12 +67,7 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
             className="block mx-auto border- border-black rounded-full"
             href="#"
           >
-            <img
-              className="h-40 object-cover"
-              // src="https://shuffle.dev/uinel-assets/images/ecommerce-product-list/phone-background-none.png"
-              src={item.image}
-              alt=""
-            />
+            <img className="h-40 object-cover" src={item.image} alt="" />
           </a>
           {/* </div> */}
           <div className="h-1/2 w-1/2 align-center">

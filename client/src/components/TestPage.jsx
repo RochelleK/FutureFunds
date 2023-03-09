@@ -1,5 +1,6 @@
 import React from 'react';
 import CustomBarChart from './CustomBarChart';
+import Features from './Features';
 // import { PieChart } from 'recharts';
 import Chart from './Items/Chart';
 import PieCharts from './Items/PieCharts';
@@ -12,7 +13,8 @@ const TestPage = () => {
       <div>
         hello
         <NavBar2/>
-<StaticBar totalHeight={100} ratio={.75}/>      </div>
+        <Features/>
+        </div>
     );
 };
 

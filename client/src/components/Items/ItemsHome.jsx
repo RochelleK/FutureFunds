@@ -3,6 +3,7 @@ import ItemsCardContainer from "./ItemsCardContainer";
 import NavBar2 from "../NavBar2";
 import Budget from "./Budget";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 
 
 const ItemsHome = ({ user, yourBudget, setYourBudget }) => {
@@ -55,6 +56,7 @@ const ItemsHome = ({ user, yourBudget, setYourBudget }) => {
         setYourBudget={setYourBudget}
         user={user}
       />
+      <Footer/>
     </div>
   );
 };

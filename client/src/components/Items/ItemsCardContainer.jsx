@@ -8,7 +8,7 @@ const ItemsCardContainer = ({ items, user, yourBudget, setYourBudget }) => {
       {/* <div className="relative container px-4 mx-auto"> */}
       {/* <h2 className="mb-14 xl:mb-24 text-9xl xl:text-10xl font-heading font-medium"></h2> */}
       {/* <div className="relative px-4 md:px-0"> */}
-      <div className=" sm:mb-0 grid grid-cols-3 gap-1">
+      <div className=" sm:mb-0 grid grid-cols-3 gap-1 ml-10">
         {/* <div className="flex sm:mb-0"> */}
         {fourItems?.map((item) => {
           return (

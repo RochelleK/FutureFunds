@@ -11,11 +11,12 @@ const Home = () => {
       <NavBar />
       <section class="relative py-24 2xl:py-44 2xl:pb-48 font-heading font-medium bg-white rounded-t-10xl overflow-hidden">
         <div class="relative container px-4 mx-auto z-10">
+        <img  src="https://static.shuffle.dev/uploads/files/60/602e8bd4323643e060e504d93a6853a827e98be6/FullLogo-Transparent-NoBuffer.png"/>
           <div class="text-center max-w-2xl mx-auto">
-            <h2 class="mb-9 font-heading text-9xl md:text-10xl xl:text-11xl leading-tight">
+            {/* <h2 class="mb-9 font-heading text-9xl md:text-10xl xl:text-11xl leading-tight text-[#018254ff]">
               Your Future Starts Now.
-            </h2>
-            <p class="mb-14 xl:mb-16 font-sans font-normal text-lg leading-6 text-gray-400">
+            </h2> */}
+            <p class="mb-14 xl:mb-16 font-sans font-normal text-4xl leading-tight text-[#8bbd4bff]">
               See Your Future Prosperity: Plan Your Retirement with Growth in
               Mind
             </p>
