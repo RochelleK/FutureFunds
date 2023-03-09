@@ -43,7 +43,7 @@ const NavBar = () => {
                 <li className="inline-block py-3 px-10 text-xl leading-6 text-white font-medium tracking-tighter font-heading bg-[#018254ff] hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-sm ml-3">
                   <Link to="/signup">
                     <a className="hover:opacity-80" href="#">
-                      SignUp
+                      Sign Up
                     </a>
                   </Link>
                 </li>
