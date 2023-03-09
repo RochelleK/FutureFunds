@@ -53,7 +53,7 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
   };
 
   return (
-    <div className="flex-shrink-0 p-1 w-full lg:w-1/3">
+    <div className="flex-shrink-0 p-1 w-full">
       <div className="p-1 xl:px-9 xl:pt-24 xl:pb-12 h-full bg-gray-100 rounded-3xl w-11/12 overflow-auto text-left">
         <a href="#">
           <p className="mb-2 text-3xl leading-8 font-heading font-bold hover:underline ">
@@ -88,7 +88,7 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
         </div>
         <p className="flex items-center text-xl text-blue-500 font-heading font-medium tracking-tighter flex-row justify-between">
           <div>Price Today</div>
-          <div>${item.price}</div>
+          <div className="text-[#fc6f56ff] font-extrabold">${item.price}</div>
         </p>
 
         {/* <div className="flex selection:flex-row flex-row py-2 justify-between"> */}
@@ -113,7 +113,7 @@ const ItemCard = ({ item, yourBudget, setYourBudget, user }) => {
           </span>
           <span> &nbsp;years:</span>
           {/* In 30 Years */}
-          <div className="text-right ml-4 font-extrabold">
+          <div className="text-right ml-4 text-[#fc6f56ff] font-extrabold">
             ${calculateCompoundInterest(principal, rate, time, periods)}
           </div>
         </div>

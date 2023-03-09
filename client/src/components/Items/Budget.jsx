@@ -58,6 +58,7 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
   }, []);
 
   if (!yourBudget[0]) return null;
+  if (total===0) return null;
 
   return (
     <div>
@@ -115,8 +116,13 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">
-                          ${user ? (total):(7)}
-                          </p>
+                          ${(total===0) ? (null):(total)} 
+                          {/* {if (total===0 ){
+                            return null} else {
+                              return total 
+                            }
+                          }} */}
+                          </p> 
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">

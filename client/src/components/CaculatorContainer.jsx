@@ -591,7 +591,7 @@ function calculateRetirementSavingsRequired(
                   <div className="px-10 mx-auto md:max-w-max">
                     <Link to="/items">
                       <a
-                        className="block py-5 px-10 w-full text-xl text-white leading-6 font-medium tracking-tighter font-heading text-center bg-[#018254] hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-xl"
+                        className="block py-5 px-10 w-full text-xl text-white leading-6 font-medium tracking-tighter font-heading text-center bg-[#018254] hover:bg-[#01825491] focus:ring-2 focus:ring-blue-500 focus:ring-opacity-500 rounded-xl"
                         href="#"
                         contenteditable="false"
                       >
