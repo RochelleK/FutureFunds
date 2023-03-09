@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, except: :me
+  # skip_before_action :authorize, except: :me
+  skip_before_action :authorize, only: [:create, :index, :show]
 
   def index
     render json: User.all
@@ -13,6 +14,12 @@ class UsersController < ApplicationController
 
   # def show
   #   render json: @current_user
+  # end
+  # def show
+  #   if current_user
+  #     render json: current_user, status: :ok
+  #   else 
+  #     render json: {errors ['Not authorized'], status: :unauthorized}
   # end
 
   #hardcoded login

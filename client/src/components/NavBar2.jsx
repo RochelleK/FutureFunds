@@ -108,7 +108,7 @@ const NavBar2 = ({ setUser }) => {
                 />
                 <img
                   className="ml-6"
-                  src="uinel-assets/elements/navigations/arrow-down-gray.svg"
+                  // src="uinel-assets/elements/navigations/arrow-down-gray.svg"
                   alt=""
                 />
               </a>

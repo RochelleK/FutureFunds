@@ -15,6 +15,16 @@ function App() {
   const [yourBudget, setYourBudget] = useState([]);
 
   // useEffect(() => {
+    // auto-login
+  //   fetch("/me").then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((user) => {
+  //         setUser(user);
+  //       });
+  //     }
+  //   });
+  // }, []);
+  // useEffect(() => {
   //   // auto-login
   //   const getUser = async () => {
   //     let req = await fetch("/me");
@@ -24,9 +34,9 @@ function App() {
   //   };
   //   getUser();
   // }, []);
-    
+
   useEffect(() => {
-    // hard code login
+    // hardcoded login
     fetch("/users/1")
       .then((res) => res.json())
       .then((data) => {

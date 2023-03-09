@@ -66,7 +66,7 @@ const Optional = ({
         <div class="flex items-center">
           <button
             class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
-            onClick={() => setMonthlyRetirement(monthlyRetirement - 1000)}
+            onClick={() => setMonthlyRetirement(monthlyRetirement - 50)}
           >
             <svg
               width="10"
@@ -96,7 +96,7 @@ const Optional = ({
 
           <button
             class="inline-flex items-center justify-center w-16 h-16 text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 rounded-sm"
-            onClick={() => setMonthlyRetirement(monthlyRetirement + 1000)}
+            onClick={() => setMonthlyRetirement(monthlyRetirement + 50)}
           >
             <svg
               width="10"

@@ -14,7 +14,7 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
       });
   }, []);
   
-  useEffect(() => {
+  // useEffect(() => {
     fetch(`users/${user.id}/sum_items`)
       .then((response) => response.json())
       .then((data) => {
@@ -22,7 +22,7 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
         console.log("total");
         console.log(data);
       });
-  }, []);
+  // }, []);
 
   const handleDelete = (id) => {
     fetch(`/lists/${id}`, {
@@ -114,7 +114,9 @@ const Budget = ({ yourBudget, setYourBudget, user }) => {
                         <p></p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
-                        <p className="min-w-max">{user ? (total):("999")}</p>
+                        <p className="min-w-max">
+                          ${user ? (total):(7)}
+                          </p>
                       </th>
                       <th className="h-20 bg-indigo-700 px-12 text-lg font-semibold uppercase">
                         <p className="min-w-max">

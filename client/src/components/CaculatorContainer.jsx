@@ -18,7 +18,7 @@ const CaculatorContainer = ({ user }) => {
   const [savings, setSavings] = useState(30000);
   const [monthly, setMonthly] = useState(500);
   const [retirementAge, setRetirementAge] = useState(67);
-  const [deathAge, setDeathAge] = useState(95);
+  const [deathAge, setDeathAge] = useState(97);
   const [rateOfReturn, setRateOfReturn] = useState(5);
   const [monthlyRetirement, setMonthlyRetirement] = useState(
     parseInt((income * 0.7) / 12)
@@ -63,6 +63,19 @@ const CaculatorContainer = ({ user }) => {
   const handleChange = (e, setState) => {
     setState(e.target.value); 
   };
+
+function calculateRetirementSavingsRequired(
+  annualExpenses
+) {
+  const withdrawalRateDecimal = 4 / 100;
+  const inflationRateDecimal = 3 / 100;
+  const factor = 1 - Math.pow(1 + inflationRateDecimal, -(deathAge-retirementAge));
+  const retirementSavingsRequired =
+    (annualExpenses / withdrawalRateDecimal) * factor;
+  return retirementSavingsRequired;
+}
+
+
 
   const currencyMask = (e) => {
     let value = e.target.value; 
@@ -167,7 +180,7 @@ const CaculatorContainer = ({ user }) => {
                     <div className="mb-8 ">
                       <label className="block mb-4 text-lg font-extrabold text-black text-left">
                         Your Age:&nbsp;
-                        <Tooltip text="The younger the better!">
+                        <Tooltip text="If you’re married, include your spouse’s income and total savings.">
                           <span className="text-blue-500 cursor-pointer">
                             <img
                               src="./noun-question-mark-2660318.svg"
@@ -490,7 +503,7 @@ const CaculatorContainer = ({ user }) => {
                           </span>
                           <div className="flex-row">
                             <Tooltip
-                              text={`If you save this amount by age ${retirementAge}, you will be able to spend ${monthlyRetirement} per month to support your living expenses in retirement.`}
+                              text={`This number will alow you to withdraw an initial 4% of your retirement portfolio balance to cover retirement expenses, equaling 70% of current income, and ensure that the portfolio lasts for at least 30 years.`}
                             >
                               <StaticBar
                                 totalHeight={200}

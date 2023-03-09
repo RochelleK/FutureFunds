@@ -39,11 +39,11 @@ const PieCharts = ({num1, num2}) => {
     );
   };
   return (
-    <div className="w-full md:w-1/2 lg:w-1/3">
-        <div className="mx-auto">
+    <div className="">
+        {/* <div className=""> */}
       <PieChart 
-      width={400} height={400} 
-      className="w-full">
+      width={200} height={200} 
+      className="">
         {/* <ResponsiveContainer width="100%" className="h-40 md:h-32 lg:h-24"> */}
           <Pie
             data={data}
@@ -64,7 +64,7 @@ const PieCharts = ({num1, num2}) => {
           </Pie>
         {/* </ResponsiveContainer> */}
       </PieChart>
-                </div>
+                {/* </div> */}
     </div>
   );
 };

@@ -21,7 +21,14 @@ const ItemsHome = ({ user, yourBudget, setYourBudget }) => {
 
   const handleClick = ()=>{
    setRandom(!random)
+   this.forceUpdate();
+   fetch("/items")
+      .then((res) => res.json())
+      .then((data) => {
+        setItems(data)
+      })
     console.log(random)
+    console.log("clicksdfsdfsfsf")
   }
 
   return (
@@ -35,19 +42,19 @@ const ItemsHome = ({ user, yourBudget, setYourBudget }) => {
         </div>
       </div> */}
 
-      <div className="flex justify-between">
-        <div className="justify-between">
+          <div className="h-40 w-40 justify-start">
+            <img src="./noun-random-2278338-018254.svg" onClick={handleClick}/>
+          </div>
+      {/* <div className=""> */}
+        {/* <div className=""> */}
           <ItemsCardContainer
             items={items}
             yourBudget={yourBudget}
             setYourBudget={setYourBudget}
             user={user}
           />
-        </div>
-        <div className="h-40 w-40 justify-end">
-          <img src="./noun-random-2278338-018254.svg" onClick={handleClick}/>
-        </div>
-      </div>
+        {/* </div> */}
+      {/* </div> */}
       {user ? (
         <Budget
           user={user}
