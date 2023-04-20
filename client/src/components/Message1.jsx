@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Message1 = () => {
+const Message1 = ({hello1}) => {
     return (
       <div>
         <h1
           className="mt-5 mb-2 text-3xl text-black font-heading font-bold text-left"
           contenteditable="false"
         >
-          Let's get Future You
+          {hello1}Let's get Future You
           <span className="text-[#fc6f56] font-extrabold">
             {" "}
             out of the red.
